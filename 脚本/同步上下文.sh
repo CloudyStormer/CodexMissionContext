@@ -1,6 +1,14 @@
 #!/bin/sh
 set -eu
 
+caller_dir=$(pwd -P)
+case "$caller_dir" in
+  /Users/qichao/Documents/AI学习|/Users/qichao/Documents/AI学习/*)
+    printf '当前位于设备 A 个人项目 AI学习；已跳过双设备上下文同步。\n'
+    exit 0
+    ;;
+esac
+
 repo_dir=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 mode=${1:-}
 message=${2:-}
