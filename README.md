@@ -15,6 +15,10 @@
 
 这里的“完整语义”不是全量复制：无论项目大小，只同步经过整理的精准压缩总结，确保另一台设备能继续工作，同时避免搬运原始对话、整份项目内容和重复信息。
 
+设备 A、B 只是本地映射标识，没有主次关系。用户会在两台设备之间交替工作；任一设备都必须先取得最新上下文，再继续、更新并推送。
+
+Windows 设备上的双设备共同项目统一存放在 `D:\.aaProject-Bruce\`，不得放到 C 盘。
+
 本仓库记录：
 
 - 项目目标、仓库地址、分支和当前提交。
@@ -96,17 +100,27 @@ CodexMissionContext/
 
 ## 第二台设备接入
 
-1. 把本仓库克隆到建议位置：
+1. 把本仓库克隆到对应平台的固定位置。
+
+macOS：
 
 ```bash
 git clone git@github.com:CloudyStormer/CodexMissionContext.git ~/Desktop/DEV/Life/CodexSpace/CodexMissionContext
 ```
 
+Windows PowerShell：
+
+```powershell
+git clone git@github.com:CloudyStormer/CodexMissionContext.git 'D:\.aaProject-Bruce\CodexMissionContext'
+```
+
 2. 在 Codex2 中打开克隆目录并启动一个任务，哪怕只发送“开始”。
 3. 根目录 `AGENTS.md` 会自动进入 Codex 上下文，并直接执行设备 B 首次接入；不需要再粘贴任何说明。
 
-当前设备登记为 A；另一台设备预留为 B。
+设备标识 A、B 仅用于区分本地 `projectId`、`threadId` 和路径，不表示主设备或备用设备。
 
 设备接入后必须先执行“只增不减”的项目与任务清单对齐。额外项目和任务全部保留，绝不通过删除获得表面一致。
+
+在 Windows 设备上接入时，仓库固定使用 `D:\.aaProject-Bruce\CodexMissionContext`；其他共同项目也必须位于 `D:\.aaProject-Bruce\` 下。
 
 注意：`git clone` 本身只下载文件，不会主动唤醒 Codex。必须在 Codex2 中打开该目录并启动一次任务；从那一刻起，无需额外解释。

@@ -9,18 +9,31 @@
 - 不登记项目、任务、学习记录或阻塞项。
 - `AI学习` 使用它自己的独立方式，除非用户以后明确改变范围。
 
-本机所有 Codex 任务都使用以下持久化上下文仓库：
+设备 A、B 只是本地标识，没有主设备、次设备或固定接力顺序。用户会交替使用两台设备；当前使用哪台设备，哪台设备就必须拉取最新上下文、继续工作、及时更新并推送。
+
+持久化上下文仓库按平台固定为：
 
 ```text
-~/Desktop/DEV/Life/CodexSpace/CodexMissionContext
+设备 A（macOS）：~/Desktop/DEV/Life/CodexSpace/CodexMissionContext
+设备 B（Windows）：D:\.aaProject-Bruce\CodexMissionContext
 ```
+
+Windows 上所有双设备共同项目必须位于 `D:\.aaProject-Bruce\` 下，禁止放到 C 盘。共同任务必须直接使用 D 盘已保存项目，不得在 C 盘创建 Codex worktree 或项目副本；Git、Codex 等系统程序自身和不含项目内容的状态目录不属于项目存放范围。
 
 ## 每次任务开始
 
-1. 在进行实质性工作前运行：
+1. 在进行实质性工作前，按当前平台运行：
+
+   macOS：
 
    ```bash
    ~/Desktop/DEV/Life/CodexSpace/CodexMissionContext/脚本/同步上下文.sh 开始
+   ```
+
+   Windows PowerShell：
+
+   ```powershell
+   & 'C:\Program Files\Git\bin\bash.exe' 'D:/.aaProject-Bruce/CodexMissionContext/脚本/同步上下文.sh' 开始
    ```
 
 2. 根据当前工作目录确定项目；没有项目时归入“通用”。
@@ -33,6 +46,7 @@
 
 - 保留用户要求、精确数字、日期、文件路径、命令、结果、关键决定、失败经验和能力边界。
 - 始终把这些内容整理成可续接的精准压缩总结，不同步原始对话、全量项目内容或重复信息。
+- 不把某台设备视为唯一事实来源；以远端最新提交和持久化记录为准，允许下一次从任一设备继续。
 - 项目代码仍在项目自己的 Git 仓库中修改和同步。
 - 不读取或复制旧对话全文来恢复记忆；优先使用已压缩的任务记录。
 
@@ -41,11 +55,20 @@
 1. 只有当前任务已在共同任务清单中，或被用户明确指定为长期任务，才按模板新增或更新任务记录；仅仅属于共同项目并不够，最近临时对话不保存。
 2. 只有稳定项目事实发生变化时，才更新对应项目的 `项目概览.md`。
 3. 如果项目代码有本任务产生的修改，只处理本任务范围内的文件；运行验证，提交并推送项目自己的 Git 仓库。推送前取得远端更新，禁止强制推送；失败时报告真实状态。
-4. 运行：
+4. 按当前平台运行检查和结束同步。
+
+   macOS：
 
    ```bash
    ~/Desktop/DEV/Life/CodexSpace/CodexMissionContext/脚本/检查仓库.sh
    ~/Desktop/DEV/Life/CodexSpace/CodexMissionContext/脚本/同步上下文.sh 结束 "项目名：任务简述"
+   ```
+
+   Windows PowerShell：
+
+   ```powershell
+   & 'C:\Program Files\Git\bin\bash.exe' 'D:/.aaProject-Bruce/CodexMissionContext/脚本/检查仓库.sh'
+   & 'C:\Program Files\Git\bin\bash.exe' 'D:/.aaProject-Bruce/CodexMissionContext/脚本/同步上下文.sh' 结束 '项目名：任务简述'
    ```
 
 5. 最终答复必须说明上下文同步是否成功；若失败，给出冲突、网络或权限的真实原因。
@@ -55,4 +78,5 @@
 - 永不提交 `auth.json`、`.env`、API Key、访问令牌、密码、Cookie、SSH 私钥、Codex 本地数据库、session、缓存或浏览器登录态。
 - 原始运行进程和机器状态不属于 Git 同步范围。
 - 项目和任务列表对齐只能增加缺失项。禁止为了统一而删除、归档、重命名或隐藏任何现有项目和任务。
+- Windows 设备不得把共同项目克隆、创建或迁移到 C 盘，也不得为共同任务在 C 盘创建 Codex worktree 或项目副本。
 - 设备存在清单之外的额外项目或任务时，保留并报告差异。
