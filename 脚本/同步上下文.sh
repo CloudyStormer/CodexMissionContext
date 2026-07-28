@@ -6,6 +6,11 @@ mode=${1:-}
 message=${2:-}
 device_id=A
 
+if [ -z "${GIT_SSH_COMMAND:-}" ]; then
+  GIT_SSH_COMMAND='ssh -o BatchMode=yes -o ConnectTimeout=15 -o ConnectionAttempts=1 -o ServerAliveInterval=10 -o ServerAliveCountMax=2'
+  export GIT_SSH_COMMAND
+fi
+
 if [ -f "$repo_dir/.device-id" ]; then
   device_id=$(sed -n '1p' "$repo_dir/.device-id")
 fi
