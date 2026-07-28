@@ -1,0 +1,4 @@
+interface:
+  display_name: "aidrama"
+  short_description: "把故事创意变成剧本、分镜、生成提示词和配音字幕生产包"
+  default_prompt: "使用 $aidrama 把我的故事创意整理成可直接制作的中文 AI 漫剧生产包。"
