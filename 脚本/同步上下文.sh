@@ -37,6 +37,7 @@ case "$mode" in
     "$repo_dir/脚本/检查仓库.sh"
     git -C "$repo_dir" add -- \
       .gitignore README.md AGENTS.md 全局规则 全局技能 项目上下文 历史任务 同步清单 设备 清单 脚本
+    git -C "$repo_dir" diff --cached --check
     if ! git -C "$repo_dir" diff --quiet; then
       printf '仍有未暂存的已跟踪修改，停止提交，请先确认：\n' >&2
       git -C "$repo_dir" diff --name-only >&2
