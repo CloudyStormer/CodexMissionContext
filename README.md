@@ -42,7 +42,7 @@ CodexMissionContext/
 │   ├── 项目索引.md
 │   ├── lottery/
 │   ├── CodexMissionContext/
-│   ├── AI学习/
+│   ├── AI学习/                 # A 端个人冻结归档，双设备忽略
 │   ├── 通用/
 │   └── 模板/
 ├── 历史任务/
@@ -95,22 +95,17 @@ CodexMissionContext/
 
 ## 第二台设备接入
 
-1. 把本仓库克隆到相同位置：
-
-```text
-~/Desktop/DEV/Life/CodexSpace/CodexMissionContext
-```
-
-2. 运行：
+1. 把本仓库克隆到建议位置：
 
 ```bash
-./脚本/安装到本机.sh B
+git clone git@github.com:CloudyStormer/CodexMissionContext.git ~/Desktop/DEV/Life/CodexSpace/CodexMissionContext
 ```
 
-3. 把 [设备 B 首次接入指令](设备/B/首次接入指令.md) 发给另一台设备的 Codex。
-4. 重启 Codex 或新建任务。
-5. 首次任务先运行 `./脚本/同步上下文.sh 开始`。
+2. 在 Codex2 中打开克隆目录并启动一个任务，哪怕只发送“开始”。
+3. 根目录 `AGENTS.md` 会自动进入 Codex 上下文，并直接执行设备 B 首次接入；不需要再粘贴任何说明。
 
 当前设备登记为 A；另一台设备预留为 B。
 
 设备接入后必须先执行“只增不减”的项目与任务清单对齐。额外项目和任务全部保留，绝不通过删除获得表面一致。
+
+注意：`git clone` 本身只下载文件，不会主动唤醒 Codex。必须在 Codex2 中打开该目录并启动一次任务；从那一刻起，无需额外解释。
