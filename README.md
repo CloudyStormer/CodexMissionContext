@@ -47,6 +47,7 @@ CodexMissionContext/
 ├── 项目上下文/
 │   ├── 项目索引.md
 │   ├── lottery/
+│   ├── vid-mat-lab/
 │   ├── CodexMissionContext/
 │   ├── 通用/
 │   └── 模板/
