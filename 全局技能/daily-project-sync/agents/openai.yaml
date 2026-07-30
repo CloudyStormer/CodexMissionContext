@@ -1,0 +1,4 @@
+interface:
+  display_name: "每日项目同步"
+  short_description: "按项目汇总今天的侧边栏任务，并完成共同仓库的拉取、提交与推送"
+  default_prompt: "使用 $daily-project-sync 汇总今天各项目任务，并依次拉取、提交和推送共同仓库。"
