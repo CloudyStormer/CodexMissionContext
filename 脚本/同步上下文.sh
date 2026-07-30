@@ -101,7 +101,7 @@ case "$mode" in
     reject_local_removals
     "$repo_dir/脚本/检查仓库.sh"
     git -C "$repo_dir" add -- \
-      .gitignore README.md AGENTS.md 全局规则 全局技能 项目上下文 历史任务 同步清单 设备 清单 脚本
+      .gitignore README.md AGENTS.md 全局规则 全局技能 项目上下文 每日同步 历史任务 同步清单 设备 清单 脚本
     reject_local_removals
     git -C "$repo_dir" diff --cached --check
     if ! git -C "$repo_dir" diff --quiet; then

@@ -16,6 +16,8 @@ AGENTS.md
 全局技能/check-projects/SKILL.md
 全局技能/check-projects/agents/openai.yaml
 全局技能/check-projects/scripts/inspect-project-repos.sh
+全局技能/daily-project-sync/SKILL.md
+全局技能/daily-project-sync/agents/openai.yaml
 全局技能/skillnotes/SKILL.md
 同步清单/项目清单.md
 同步清单/任务清单.md
