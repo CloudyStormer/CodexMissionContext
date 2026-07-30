@@ -9,9 +9,13 @@ README.md
 AGENTS.md
 全局规则/AGENTS.md
 项目上下文/项目索引.md
+项目上下文/aidrama/项目概览.md
 项目上下文/模板/项目概览模板.md
 项目上下文/模板/任务记录模板.md
 全局技能/aidrama/SKILL.md
+全局技能/check-projects/SKILL.md
+全局技能/check-projects/agents/openai.yaml
+全局技能/check-projects/scripts/inspect-project-repos.sh
 全局技能/skillnotes/SKILL.md
 同步清单/项目清单.md
 同步清单/任务清单.md

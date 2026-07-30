@@ -1,0 +1,4 @@
+interface:
+  display_name: "检查项目"
+  short_description: "同步两端项目并集，走查全部仓库并完成正规提交与交接流程"
+  default_prompt: "使用 $check-projects 开始同步两端项目并集，或检查并提交当前项目列表中的全部 Git 仓库。"
