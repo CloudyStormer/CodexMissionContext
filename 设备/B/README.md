@@ -12,6 +12,6 @@
 - 个人 Skill：`aidrama`、`skillnotes` 已通过 Windows Junction 指向本仓库
 - 原内容及首次复制备份：`C:\Users\Administrator\.codex\sync-backups\20260728-210340-1395\`
 - Windows 链接修复备份：`C:\Users\Administrator\.codex\sync-backups\20260728-211650-739\`
-- 清单状态：已完整应用；`CodexMissionContext`、`lottery` 和“ 双设备同步维护 ”共同任务均已完成本机映射
+- 清单状态：任务清单 `3` 已完整应用；项目清单 `3` 为部分应用记录，`vid-mat-lab` 的 D 盘仓库已就绪，但本地 `projectId` 尚待本机回读确认
 
 设备 A、B 没有主次关系。每次回到本设备都先拉取最新上下文；离开前及时更新、检查、提交并推送。
