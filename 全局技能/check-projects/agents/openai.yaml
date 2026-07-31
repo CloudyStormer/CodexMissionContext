@@ -1,4 +1,4 @@
 interface:
   display_name: "检查项目"
-  short_description: "完整同步任务、项目并集与全部仓库，或执行项目提交和交接"
-  default_prompt: "使用 $check-projects 执行完整同步：刷新可见任务、两端项目并集和全部 Git 仓库；也可执行项目提交或交接。"
+  short_description: "完整同步任务、项目并集、侧边栏布局与全部仓库，或执行项目提交和交接"
+  default_prompt: "使用 $check-projects 执行完整同步：刷新可见任务、项目并集、侧边栏顺序和置顶状态及全部 Git 仓库；也可执行项目提交或交接。"
