@@ -12,6 +12,6 @@
 - 个人 Skill：`aidrama`、`skillnotes`、`daily-project-sync` 已由本仓库 Junction 安装；`check-projects` 已进入仓库，但本次安装因当前沙箱拒绝写入 `C:\Users\Administrator\.codex\skills` 而回滚，需在获得本机配置写权限的任务中重试
 - 原内容及首次复制备份：`C:\Users\Administrator\.codex\sync-backups\20260728-210340-1395\`
 - Windows 链接修复备份：`C:\Users\Administrator\.codex\sync-backups\20260728-211650-739\`
-- 清单状态：任务清单 `3`、项目清单 `5` 已完整映射；业务仓库的独立 Git 阻塞记录在每日同步报告
+- 清单状态：任务清单 `4`、项目清单 `5` 已完整映射；目标项目清单 `6` 和侧边栏布局 `1` 待下次“开始同步”应用，业务仓库的独立 Git 阻塞记录在每日同步报告
 
 设备 A、B 没有主次关系。每次回到本设备都先拉取最新上下文；离开前及时更新、检查、提交并推送。
