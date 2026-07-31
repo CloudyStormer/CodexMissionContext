@@ -92,10 +92,10 @@ description: 协调两台 Codex 设备的项目并集、侧边栏项目顺序与
 
 不要把一个项目等同于一个仓库。项目根目录本身以及其下的独立 Git 工作树都要检查；例如 `lottery` 必须覆盖前端和后端两个仓库。
 
-把已解析出的项目根目录交给只读盘点脚本：
+把已解析出的项目根目录交给只读盘点脚本。以下命令从 `CodexMissionContext` 根目录运行：
 
 ```bash
-bash scripts/inspect-project-repos.sh --fetch "/项目根目录一" "/项目根目录二"
+bash 全局技能/check-projects/scripts/inspect-project-repos.sh --fetch "/项目根目录一" "/项目根目录二"
 ```
 
 脚本只发现仓库、刷新远端引用并输出状态，不会修改工作树、创建提交或推送。
