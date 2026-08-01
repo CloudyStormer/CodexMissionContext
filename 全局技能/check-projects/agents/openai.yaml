@@ -1,4 +1,4 @@
 interface:
   display_name: "检查项目"
-  short_description: "双端同轮先拉后推全部共同项目，并汇总所有任务交接语义"
-  default_prompt: "使用 $check-projects 执行‘开始同步’：以同一运行 ID 让两端分别走查全部共同项目与任务，代码先拉后推，并汇总双端交接。"
+  short_description: "双端同步全部项目代码、侧边栏任务镜像及精简交接上下文"
+  default_prompt: "使用 $check-projects 执行‘开始同步’：以同一运行 ID 让两端同步全部共同项目代码，按任务并集补齐可见侧边栏镜像并发送精简交接上下文，再验证共享顺序与置顶；任一项未完成就明确报告没有全部同步。"
