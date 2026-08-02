@@ -1,0 +1,1136 @@
+# 设备 A 任务快照
+
+- 运行 ID：`A-20260802T200017+0800`
+- 设备：A
+- 交接包协议版本：`1`
+- 目标修订：`1`
+- 规范化目标顺序 SHA-256：`5310e24b57cfc72e401f56e2e6d775351fa701fd8fb0d1f451b62ca92cb5d81e`
+- 任务清单版本：`5`
+- 开始时有效布局版本：`2`
+- 开始时有效布局 SHA-256：`9572bd1210a264d270ddadee924bfb626efee445e663413fd9f008a7c077ad12`
+- 开始时上下文提交：`331f1bbda9a83a5628c989a33089cd7ac4a5c7e1`
+- 快照时间：2026-08-02 20:10（Asia/Shanghai）
+- 正式任务来源：Codex `list_threads(limit=50)`；`unavailableHosts=[]`、`unavailableSources=[]`
+- 快照结论：目标 39 项；A 端 PRESENT 38 项、MISSING 1 项（`demo-foreman`）；38 项均非置顶。B 快照不可达，尚未生成合并包。
+
+## `mission-context-current-sync`
+
+logical_task_id: mission-context-current-sync
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 开始
+logical_project_id: mission-context
+local_thread_id: 019fc25a-b5c4-7082-a9bc-7c7049928335
+pinned: false
+visible_shared_index: 22
+semantic_body_sha256: 2586c4ac78ead0fca8837a1fc9790dde6b03ae4940321d6dd0628c878ad91b8f
+semantic_body: |
+  当前目标
+  作为 CodexMissionContext 的“开始”同步入口镜像，保存设备 B 同名任务的可续接语义；仅在用户后续明确触发时执行完整同步。
+
+  已完成
+  完全对齐交接协议 1、目标修订 1 和 check-projects Skill 已发布；当前运行 A-20260802T200017+0800 已由设备 A 建立。
+
+  关键决定与原因
+  镜像只导入精简上下文并等待用户继续，不自动执行旧需求；双端完成必须具有同一运行 ID 的 A/B 快照、唯一合并包和双端回执。
+
+  文件与命令
+  上下文入口：同步清单/完全对齐交接包.md、同步运行/README.md、全局技能/check-projects/SKILL.md。
+
+  验证
+  设备 A 已拉取 CodexMissionContext 至 331f1bb；本镜像创建后还需回读标题、项目归属和正文摘要。
+
+  失败与风险
+  设备 B 维护任务当前不可达；Demo、两个 funhub 来源、完整布局和双端回执仍是阻塞。
+
+  下一步
+  保持等待；用户再次下达同步命令时先拉取上下文并按最新未完成运行续接。
+
+  原设备与更新时间
+  设备 B 语义基线，2026-08-02；由设备 A 在运行 A-20260802T200017+0800 导入。
+
+## `mission-context-maintenance`
+
+logical_task_id: mission-context-maintenance
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 双设备同步维护
+logical_project_id: mission-context
+local_thread_id: 019fa7e2-1ca2-7453-aadf-bbbb23d633f3
+pinned: false
+visible_shared_index: 23
+semantic_body_sha256: 4bd865c2893138eeaeea0073edf8b162d844a5e2d16025b3b72f27a3b1315127
+semantic_body: |
+  ## 当前目标
+  完成 A、B 双设备的项目、代码、39 个任务语义与共享布局同步。
+  ## 已完成
+  本轮已拉取上下文 331f1bb，A 的 19 个现存仓库已取得远端并对齐，已补建 21 个 A 端任务镜像。
+  ## 关键决定与原因
+  必须取得同一运行 ID 的 A/B 快照、唯一合并包和双端回执；对端不可达不得假装完成。
+  ## 文件与命令
+  同步清单/完全对齐交接包.md、同步运行/README.md、设备/A/任务映射.md；运行 ID A-20260802T200017+0800。
+  ## 验证
+  A 正式列表回读 38/39 个目标任务且全部非置顶；19 仓 clean、0/0。
+  ## 失败与风险
+  B 维护任务不可达；Demo 无 HEAD；两个 funhub 来源不可达；敏感环境文件仍是硬阻塞。
+  ## 下一步
+  等待 B 同轮快照和回执；修复外部来源与凭据后再完成布局和最终验收。
+  ## 原设备与更新时间
+  设备 A，2026-08-02 20:10。
+
+## `ai-workflow-00-foreman`
+
+logical_task_id: ai-workflow-00-foreman
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 00 包工头
+logical_project_id: ai-workflow
+local_thread_id: 019fb746-5875-77b3-809a-08a16100d950
+pinned: false
+visible_shared_index: 24
+semantic_body_sha256: 249a4e040c74eb6bdcdb59bd2f7aa786ad301301bb717aa31ccfe186f8571599
+semantic_body: |
+  ## 当前目标
+  统筹 AIWorkFlow 全部固定角色和项目门禁。
+  ## 已完成
+  唯一根仓已收敛并由 A 拉取至 main/25d7ff5；12 个固定角色任务均可见。
+  ## 关键决定与原因
+  只使用唯一根仓 AI-Workflow-Dev；角色按审批门推进，不按项目重复创建角色。
+  ## 文件与命令
+  /Users/qichao/Desktop/DEV/Lenovo/AIWorkFlow；scripts/check-git-boundary.sh。
+  ## 验证
+  根仓 272 个跟踪文件、单一 .git、无 gitlink，HEAD 与 upstream 一致。
+  ## 失败与风险
+  B 尚未在正式项目列表登记 AIWorkflow，因此缺 13 个任务镜像。
+  ## 下一步
+  等待用户业务指令；同步层面由 B 登记项目并补角色镜像。
+  ## 原设备与更新时间
+  设备 A，项目事实更新至 2026-08-02。
+
+## `ai-workflow-01-market-researcher`
+
+logical_task_id: ai-workflow-01-market-researcher
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 01 市场调研员
+logical_project_id: ai-workflow
+local_thread_id: 019fb799-5686-7571-ab7f-25bf816128b0
+pinned: false
+visible_shared_index: 36
+semantic_body_sha256: 258ad91032ef85fee079d1223e558995b38bb90b238268b695bf08540d9970ac
+semantic_body: |
+  ## 当前目标
+  维护 AI Model Radar 的国内外大模型来源研究与市场情报入口。
+  ## 已完成
+  官方源优先、社区发现后回主源核验的来源生态调研已交付，目标日筛约 10—20 个事件。
+  ## 关键决定与原因
+  市场调研位于项目经理上游，未经用户审核不进入下游阶段。
+  ## 文件与命令
+  AIWorkFlow/projects/ai-model-radar；具体本轮命令未新增。
+  ## 验证
+  调研交付已形成；当前等待用户审核。
+  ## 失败与风险
+  用户尚未批准进入项目经理阶段。
+  ## 下一步
+  等待用户审核或补充市场范围。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `ai-workflow-02-project-manager`
+
+logical_task_id: ai-workflow-02-project-manager
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 02 项目经理
+logical_project_id: ai-workflow
+local_thread_id: 019fb738-5706-7552-849f-35c8a124e2f0
+pinned: false
+visible_shared_index: 37
+semantic_body_sha256: 43fccd2775de3d201c32aec2780cd4eea4afef2156beced56f22fbe273753edf
+semantic_body: |
+  ## 当前目标
+  作为固定项目经理角色负责计划、拆解、进度、风险与验收。
+  ## 已完成
+  角色模板与审批边界已初始化。
+  ## 关键决定与原因
+  只有收到用户批准和上游产物后入场，不自动推进业务。
+  ## 文件与命令
+  AIWorkFlow 根仓及项目治理文件；本轮无业务文件。
+  ## 验证
+  正式任务实体、标题和项目归属已回读。
+  ## 失败与风险
+  没有新的已批准项目经理交付。
+  ## 下一步
+  等待用户或包工头明确派发。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `ai-workflow-03-product-manager`
+
+logical_task_id: ai-workflow-03-product-manager
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 03 产品经理
+logical_project_id: ai-workflow
+local_thread_id: 019fb74a-9dbd-7e13-823f-80584d8ac1b7
+pinned: false
+visible_shared_index: 26
+semantic_body_sha256: b535be9e17bea6e492ba3714cc15568f478cc3128dbae73baa781bcc9437513f
+semantic_body: |
+  ## 当前目标
+  负责产品需求、PRD 和验收标准；当前关注 AI English Learning 产品审核门。
+  ## 已完成
+  行内字母槽变更 PRD v1.1 已形成并停在产品审核。
+  ## 关键决定与原因
+  产品通过前 UI 冻结，UI 再次通过前前端不得编码。
+  ## 文件与命令
+  projects/ai-english-learning/docs/01-prd.md 与 workflow 状态文件。
+  ## 验证
+  产品自查和工作流一致性验证已完成。
+  ## 失败与风险
+  用户尚未批准产品产物。
+  ## 下一步
+  等待用户选择通过、修改或打回。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `ai-workflow-04-ui-ux-designer`
+
+logical_task_id: ai-workflow-04-ui-ux-designer
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 04 UI/UX设计师
+logical_project_id: ai-workflow
+local_thread_id: 019fb74a-9f5f-7433-999e-2e30012296a0
+pinned: false
+visible_shared_index: 34
+semantic_body_sha256: a0ecaa6dada58e1ccf10fe47fb587332eb664fed03fe9bc0484f4ae180634734
+semantic_body: |
+  ## 当前目标
+  负责固定 UI/UX 角色及已批准项目的界面设计。
+  ## 已完成
+  Control Center 高信息密度治理大屏提示词和演示站点 v3 已完成，数据标记为演示数据。
+  ## 关键决定与原因
+  产品审批通过前不为 AI English Learning 继续 UI；演示站点不等于新 Git 来源。
+  ## 文件与命令
+  AIWorkFlow/control-center 及相关设计说明。
+  ## 验证
+  Control Center 演示可用，仍等待用户审核。
+  ## 失败与风险
+  未取得新的 UI 审核通过。
+  ## 下一步
+  等待用户审核或正式产品输入。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `ai-workflow-05-architect`
+
+logical_task_id: ai-workflow-05-architect
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 05 架构师
+logical_project_id: ai-workflow
+local_thread_id: 019fb74a-a1a4-7a90-9a35-ebb4f3d9d6db
+pinned: false
+visible_shared_index: 35
+semantic_body_sha256: f17b0ac46d08f75ce0021856a938df9086e413bd51cbc47ff70a2499f479f838
+semantic_body: |
+  ## 当前目标
+  作为固定架构师负责技术选型、模块、接口和非功能设计。
+  ## 已完成
+  角色模板与工作边界已初始化。
+  ## 关键决定与原因
+  只有在产品和项目门禁允许后入场，不替用户批准。
+  ## 文件与命令
+  AIWorkFlow 根仓；本轮无新架构文件。
+  ## 验证
+  任务实体、标题和项目归属已回读。
+  ## 失败与风险
+  没有新的已批准架构交付。
+  ## 下一步
+  等待项目经理或用户明确派发。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `ai-workflow-06-frontend-engineer`
+
+logical_task_id: ai-workflow-06-frontend-engineer
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 06 前端工程师
+logical_project_id: ai-workflow
+local_thread_id: 019fb74a-a427-7101-9941-442c34b157e3
+pinned: false
+visible_shared_index: 27
+semantic_body_sha256: c5085a0e575bc26514c535b6766825d35cb130792dad7e1712bf032637da85b8
+semantic_body: |
+  ## 当前目标
+  作为固定前端工程师实施通过产品和 UI 审核的前端需求。
+  ## 已完成
+  角色模板已初始化；AI English Learning 行内字母槽需求已回退产品阶段。
+  ## 关键决定与原因
+  产品和 UI 双重审核前不得编码，避免越级实现。
+  ## 文件与命令
+  projects/ai-english-learning；本轮无前端修改。
+  ## 验证
+  任务实体、标题和项目归属已回读。
+  ## 失败与风险
+  当前产品仍在审核门，前端冻结。
+  ## 下一步
+  等待产品和 UI 依次获批。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `ai-workflow-07-backend-engineer`
+
+logical_task_id: ai-workflow-07-backend-engineer
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 07 后端工程师
+logical_project_id: ai-workflow
+local_thread_id: 019fb74a-a6f7-7e31-826f-799d3e713642
+pinned: false
+visible_shared_index: 32
+semantic_body_sha256: dbb73d8cf7049baa35e915c24d2f9dfb73934e55d27e83f75ff4e596f21c0cef
+semantic_body: |
+  ## 当前目标
+  作为固定后端工程师负责 API、业务逻辑、数据访问和认证集成。
+  ## 已完成
+  角色模板与边界已初始化。
+  ## 关键决定与原因
+  只处理已批准并由项目流程派发的后端工作。
+  ## 文件与命令
+  AIWorkFlow 根仓；本轮无后端业务文件。
+  ## 验证
+  任务实体、标题和项目归属已回读。
+  ## 失败与风险
+  没有新的已批准后端交付。
+  ## 下一步
+  等待明确派发。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `ai-workflow-08-data-engineer`
+
+logical_task_id: ai-workflow-08-data-engineer
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 08 数据工程师
+logical_project_id: ai-workflow
+local_thread_id: 019fb74a-a99a-7731-9f95-ecaac1e96e99
+pinned: false
+visible_shared_index: 33
+semantic_body_sha256: b8ad2ad1e567f37e29c1b9e36f2877f7193d733ded4b895919f217538302e2d9
+semantic_body: |
+  ## 当前目标
+  作为固定数据工程师负责数据模型、迁移、SQL、缓存和数据管道。
+  ## 已完成
+  角色模板与边界已初始化。
+  ## 关键决定与原因
+  不在缺少架构与业务审批时自行变更数据层。
+  ## 文件与命令
+  AIWorkFlow 根仓；本轮无数据文件。
+  ## 验证
+  任务实体、标题和项目归属已回读。
+  ## 失败与风险
+  没有新的已批准数据交付。
+  ## 下一步
+  等待明确派发。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `ai-workflow-09-code-reviewer`
+
+logical_task_id: ai-workflow-09-code-reviewer
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 09 代码审查员
+logical_project_id: ai-workflow
+local_thread_id: 019fb74a-b82f-76c3-ae1c-bef178d2939b
+pinned: false
+visible_shared_index: 31
+semantic_body_sha256: 7c3067df4cb17768acf129b9981183881870da50f571f479378e5467a4272b67
+semantic_body: |
+  ## 当前目标
+  作为固定代码审查员检查质量、缺陷、安全、性能和架构合规。
+  ## 已完成
+  角色模板与边界已初始化。
+  ## 关键决定与原因
+  只审查真实差异并按严重级别给出证据，不替代实现者。
+  ## 文件与命令
+  AIWorkFlow 根仓；本轮无待审查新差异。
+  ## 验证
+  任务实体、标题和项目归属已回读。
+  ## 失败与风险
+  当前没有新的审查任务。
+  ## 下一步
+  等待提交或明确审查请求。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `ai-workflow-10-test-engineer`
+
+logical_task_id: ai-workflow-10-test-engineer
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 10 测试工程师
+logical_project_id: ai-workflow
+local_thread_id: 019fb74a-acbb-7442-ae63-5e61246a26f5
+pinned: false
+visible_shared_index: 30
+semantic_body_sha256: 462b6313393f46cc6b93670553857b6d0f4e8cb3e038991a1b59ef51a67072e9
+semantic_body: |
+  ## 当前目标
+  作为固定测试工程师负责测试计划、用例、回归和上线建议。
+  ## 已完成
+  角色模板与边界已初始化。
+  ## 关键决定与原因
+  测试依据已批准需求与真实实现，不伪造通过。
+  ## 文件与命令
+  AIWorkFlow 根仓；本轮无新测试交付。
+  ## 验证
+  任务实体、标题和项目归属已回读。
+  ## 失败与风险
+  当前没有新的已批准测试范围。
+  ## 下一步
+  等待实现和验收标准就绪。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `ai-workflow-11-devops-engineer`
+
+logical_task_id: ai-workflow-11-devops-engineer
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 11 DevOps工程师
+logical_project_id: ai-workflow
+local_thread_id: 019fb74a-b067-76d0-8954-20aa6354d5b2
+pinned: false
+visible_shared_index: 29
+semantic_body_sha256: 43b873cc45dbf4bbabd09091d0da09812d28a169c87d767ac1b4286179041102
+semantic_body: |
+  ## 当前目标
+  作为固定 DevOps 工程师负责 CI/CD、部署、环境、监控和回滚。
+  ## 已完成
+  角色模板与边界已初始化。
+  ## 关键决定与原因
+  只对已验证版本和明确环境执行部署，不泄露凭据。
+  ## 文件与命令
+  AIWorkFlow 根仓；本轮无部署文件。
+  ## 验证
+  任务实体、标题和项目归属已回读。
+  ## 失败与风险
+  当前没有新的部署授权。
+  ## 下一步
+  等待明确发布任务。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `ai-workflow-retired-inline-letter-slots`
+
+logical_task_id: ai-workflow-retired-inline-letter-slots
+entity_state: PRESENT
+semantic_state: PRESENT
+title: AI English Learning｜产品变更：行内字母槽填空
+logical_project_id: ai-workflow
+local_thread_id: 019fb892-8981-74f0-a396-11a21b018c43
+pinned: false
+visible_shared_index: 1
+semantic_body_sha256: af2ba9096d056be7d72ebc536f0071947c8aebc4ff3862ec5b96baee371a492e
+semantic_body: |
+  ## 当前目标
+  保留 AI English Learning“行内字母槽填空”产品变更的历史停用任务语义；等待用户审核产品产物，不自动继续 UI 或前端阶段。
+  ## 已完成
+  PRD v1.1 已明确移除独立答案框，答案直接输入句中缺词字母槽；产品提交 a1d0444 已推送，工作流回退至 product-definition / awaiting-product-change-review。
+  ## 关键决定与原因
+  严格遵守产品审核门：产品通过后才能进入 UI，UI 再次通过后才能回前端；固定槽位不兼容的同义词仅作答后扩展，避免与槽位长度或提示冲突。
+  ## 文件与命令
+  主要文件 projects/ai-english-learning/docs/01-prd.md，以及 workflow/approvals.yaml、artifacts.yaml、events.jsonl、state.yaml。
+  ## 验证
+  产品自查覆盖连续输入、退格、粘贴、提示合并、提交、纠错、短词、分隔符、移动端键盘和无障碍；YAML、JSONL、文档哈希与差异检查通过。
+  ## 失败与风险
+  此任务为历史停用产品任务，不是第 13 个固定角色；原 UI 提示词暂停。未经用户批准不得继续旧需求或启动下游。
+  ## 下一步
+  保持可见并等待用户选择：通过进入 UI、修改产品需求或打回重做。
+  ## 原设备与更新时间
+  原设备 A；语义更新时间 2026-08-01。
+
+## `vid-mat-lab-foreman`
+
+logical_task_id: vid-mat-lab-foreman
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头
+logical_project_id: vid-mat-lab
+local_thread_id: 019fb114-130d-7e50-aacd-f6a26b403b91
+pinned: false
+visible_shared_index: 28
+semantic_body_sha256: 8a9bae44d01ea8c56023866c848d6c0fc4a20b3c07f2ed13d81436df07e506a3
+semantic_body: |
+  ## 当前目标
+  统筹内耗儿绝缘体短视频和拼豆底板生产。
+  ## 已完成
+  第 010—012 集历史成果已归档；A 已拉取绿发星灵 108×108 眼睛增强拼豆图至 9f773f2。
+  ## 关键决定与原因
+  永久 IP 底稿和角色结构必须保持一致；共同项目只使用正式权威仓库。
+  ## 文件与命令
+  episodes/010-photo-to-perler-pattern、episodes/012-dance-off-the-stress、assets/brand/resistor-mascot-identity-master-original.jpg。
+  ## 验证
+  仓库 main/9f773f2 clean、0/0；新拼豆图及生成器已在远端。
+  ## 失败与风险
+  未确认单集内容不得混入其他交付。
+  ## 下一步
+  等待用户继续具体单集。
+  ## 原设备与更新时间
+  设备 A，项目事实更新至 2026-08-02。
+
+## `vid-mat-lab-foreman-2`
+
+logical_task_id: vid-mat-lab-foreman-2
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头 (2)
+logical_project_id: vid-mat-lab
+local_thread_id: 019fc25f-c000-78a2-9f5e-c3a953e1ebf9
+pinned: false
+visible_shared_index: 19
+semantic_body_sha256: 95e2ba3dd55d601a2a4409f368f2a784e5648f41a989bb9c9701c036f23204b9
+semantic_body: |
+  ## 当前目标
+  承接 vid-mat-lab 的短视频与素材制作；这是 B 端旧 C 盘 worktree 任务，A 镜像必须使用正式项目。
+  ## 已完成
+  已知历史提交包括 cb82d20、697db9f、6b65ffe；项目随后归档绿发星灵 108×108 眼睛增强拼豆图并推送 9f773f2，设备 A 已拉取。
+  ## 关键决定与原因
+  共同项目只使用正式权威仓库；固定 IP“小内耗”的身体结构、脸型、五官比例、四肢比例和核心标志不得改变。
+  ## 文件与命令
+  相关目录 episodes/010-photo-to-perler-pattern、episodes/012-dance-off-the-stress；永久底稿 assets/brand/resistor-mascot-identity-master-original.jpg。
+  ## 验证
+  第 012 集关键帧及配套材料已归档；相关提交已推送，A 当前 HEAD 与 upstream 均为 9f773f2。
+  ## 失败与风险
+  不得继续使用旧 C 盘工作树；第 002—004 集曾有未确认内容，不能混入无关提交。
+  ## 下一步
+  在正式项目等待用户继续；若继续第 012 集，按既定关键帧生成 5 秒舞蹈动态并逐帧检查角色结构。
+  ## 原设备与更新时间
+  原设备 B；任务级事实至 2026-08-01，项目级补充至 2026-08-02。
+
+## `aidrama-negative-review-reaper`
+
+logical_task_id: aidrama-negative-review-reaper
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 差评死神
+logical_project_id: aidrama-project
+local_thread_id: 019fb94b-0199-7c32-8a8c-e521082eb33f
+pinned: false
+visible_shared_index: 25
+semantic_body_sha256: 57ef84d8e7726cfbae8a01661f96da9908ee694fbcdfb832ac7c324c163055bc
+semantic_body: |
+  ## 当前目标
+  保留《差评死神》双设备长期任务语义并等待继续。
+  ## 已完成
+  已导入项目概览和任务记录，没有执行遗留工作。
+  ## 关键决定与原因
+  不得在 6 集现实悬疑版与 8 集早期赛博版之间自行选择。
+  ## 文件与命令
+  项目上下文/aidrama/项目概览.md、项目上下文/aidrama/任务记录/差评死神.md。
+  ## 验证
+  Aidrama main/3baedae Git 与 LFS 完整且 upstream 一致。
+  ## 失败与风险
+  剧本版本方向仍需用户决定；同仓其他剧目内容不得触碰。
+  ## 下一步
+  等待用户明确继续和版本方向。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `aidrama-consultant`
+
+logical_task_id: aidrama-consultant
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 咨询专家
+logical_project_id: aidrama-project
+local_thread_id: 019fc25f-bcbb-7d80-9249-8c731b4cb3d9
+pinned: false
+visible_shared_index: 20
+semantic_body_sha256: d9003441c690cf8a7dade3e44212a13b9d7a58d0341a0100a8c495cc7d946f56
+semantic_body: |
+  ## 当前目标
+  审阅 AI 漫剧批量生产 PDF，并形成可执行的批量生产方案。
+  ## 已完成
+  方向已收敛为“稳定单集生产单元 + 3—5 集小批次队列”；用户发送“继续”后尚未形成最终交付。
+  ## 关键决定与原因
+  先稳定单集生产单元，再以 3—5 集小批次排队；具体取舍原因未进一步保存。
+  ## 文件与命令
+  被审阅 PDF 的精确文件名、路径及所用命令未记录；项目仓库为 Aidrama。
+  ## 验证
+  未记录最终交付或验收结果；只能确认上述方向已在 2026-08-01 日报和维护记录中重复登记。
+  ## 失败与风险
+  最终交付未形成；原线程更细的 PDF 内容、需求和审阅意见未知；不得覆盖同仓其他未确认内容。
+  ## 下一步
+  等待用户继续；如继续，重新定位原 PDF 和最近审阅产物，基于既定方向完成方案并验收。
+  ## 原设备与更新时间
+  原设备 B；已知语义更新时间 2026-08-01。
+
+## `aidrama-worker-comeback`
+
+logical_task_id: aidrama-worker-comeback
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 打工人逆袭
+logical_project_id: aidrama-project
+local_thread_id: 019fc25f-b8a6-7c63-b85e-d8669c517bd2
+pinned: false
+visible_shared_index: 21
+semantic_body_sha256: e5854bb3fcae0af731833126961e1e423f320357b9b27bd40b4137386d71b018
+semantic_body: |
+  ## 当前目标
+  与《打工人逆袭》漫剧相关的原任务目标；除精确标题外，具体需求未记录。
+  ## 已完成
+  完成内容未知；已知 B 端 Aidrama 工作树曾存在位于 AI漫剧_打工人逆袭爽剧 的既存未提交内容，其他任务明确未触碰。
+  ## 关键决定与原因
+  必须与《差评死神》等同仓其他漫剧隔离处理，避免跨任务覆盖或提交未经确认的改动。
+  ## 文件与命令
+  已知目录：AI漫剧_打工人逆袭爽剧；具体文件、命令和提交未知。
+  ## 验证
+  仅验证到该目录曾有既存未提交内容；正确性、完整性和所有权未验证。
+  ## 失败与风险
+  原对话语义不足；不可把项目级 Git 状态当作本任务完成。
+  ## 下一步
+  等待用户继续；先确认目标、已有产物和所有权，再只在本剧目范围内继续。
+  ## 原设备与更新时间
+  原设备 B；实体和相关工作树事实记录于 2026-08-01，原对话精确更新时间未知。
+
+## `aidrama-ninth-lesson`
+
+logical_task_id: aidrama-ninth-lesson
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 第九节课
+logical_project_id: aidrama-project
+local_thread_id: 019fc25f-c319-7a90-a39e-ca2f3212ea56
+pinned: false
+visible_shared_index: 18
+semantic_body_sha256: d7b1dd0b931bc6fb34fcc2a313629d56ecb9d1e22b4d7632c6eb49548a53d022
+semantic_body: |
+  ## 当前目标
+  “第九节课”原任务具体目标未知；目前只确认标题、项目归属和 B 端实体。
+  ## 已完成
+  未知。
+  ## 关键决定与原因
+  不得依据标题臆测课程内容、剧目、集数或交付形式。
+  ## 文件与命令
+  未知。
+  ## 验证
+  未找到独立记录、文件证据、命令或验收结果。
+  ## 失败与风险
+  语义来源不足；Aidrama 同仓包含多个剧目和未确认内容，错误推断可能串项目。
+  ## 下一步
+  等待用户继续；届时先确认对应剧目、目标和已有文件，再读取最小必要上下文。
+  ## 原设备与更新时间
+  原设备 B；实体于 2026-08-01 确认可见，原对话精确更新时间未知。
+
+## `watermark-foreman`
+
+logical_task_id: watermark-foreman
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头
+logical_project_id: liquidity-watermark-assistant
+local_thread_id: 019fc260-d4b8-7b02-b987-68e81dd3e7c1
+pinned: false
+visible_shared_index: 16
+semantic_body_sha256: 68ada7b94c59d9d122a5bd4d553c3e264207aac3ab9814d4cfc8f528cd37e880
+semantic_body: |
+  ## 当前目标
+  统筹去水印前后端项目；原任务具体产品需求和验收标准未保存。
+  ## 已完成
+  B 历史记录曾形成后端提交 5ad0017、前端提交 6a8f6ac，当时各自 ahead 1；A 当前远端基线分别为 2546a34、ccaa4c3，尚无证据确认两个提交已上传。
+  ## 关键决定与原因
+  只在 B 原现场重新核验、安全审查和验证后上传；A 的远端 0/0 不能替代 B 本地确认。
+  ## 文件与命令
+  仓库 liquidity-watermark-assistant-backend、liquidity-watermark-assistant-frontend；具体业务文件和原命令未知。
+  ## 验证
+  当时后端 Ruff/AST、前端 TypeScript 和差异检查通过；pytest 未运行。
+  ## 失败与风险
+  当时 SSH push 失败；提交是否仍在 B 本地未知，原功能语义和完整验收不足。
+  ## 下一步
+  等待用户继续；B 端需 fetch、核对两个提交与工作树、补测试和敏感文件检查后安全推送，A 再拉取验证。
+  ## 原设备与更新时间
+  原设备 B；项目级语义更新时间 2026-08-01，原线程精确更新时间未知。
+
+## `watermark-frontend`
+
+logical_task_id: watermark-frontend
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 前端部分
+logical_project_id: liquidity-watermark-assistant
+local_thread_id: 019fc260-d83a-7b72-abfd-dff7150de37b
+pinned: false
+visible_shared_index: 15
+semantic_body_sha256: cec536f6243403857254ce8d3c8dc4b2d6161f5fb591382ff02b1edc39a490ba
+semantic_body: |
+  ## 当前目标
+  负责去水印项目前端部分；具体功能需求未保存。
+  ## 已完成
+  B 历史记录曾创建前端提交 6a8f6ac，相对远端基线 ccaa4c3 ahead 1；尚无上传证据。
+  ## 关键决定与原因
+  未取得 B 原现场和提交差异前，不推断功能范围，也不由 A 重做或覆盖。
+  ## 文件与命令
+  仓库 liquidity-watermark-assistant-frontend；具体变更文件和命令未知。
+  ## 验证
+  TypeScript 与差异检查当时通过；未记录功能测试或 UI 验收。
+  ## 失败与风险
+  SSH push 当时失败；提交当前是否仍存在未知；原需求和验收缺失。
+  ## 下一步
+  等待用户继续；B 核验 6a8f6ac、复跑检查、排除环境敏感文件后推送，A 再拉取。
+  ## 原设备与更新时间
+  原设备 B；项目级记录日期 2026-08-01，原线程精确更新时间未知。
+
+## `watermark-backend`
+
+logical_task_id: watermark-backend
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 后端部分
+logical_project_id: liquidity-watermark-assistant
+local_thread_id: 019fc260-e86b-71b1-8c30-7356eca4b441
+pinned: false
+visible_shared_index: 10
+semantic_body_sha256: c52e863fd7fc4cda3745007b661dae917a979fc67fe199a01a0971b381fd5d58
+semantic_body: |
+  ## 当前目标
+  负责去水印项目后端部分；具体接口或业务需求未保存。
+  ## 已完成
+  B 历史记录曾创建后端提交 5ad0017，相对远端基线 2546a34 ahead 1；尚无上传证据。
+  ## 关键决定与原因
+  必须先回到 B 原现场核对提交内容和安全性，不能仅凭提交号声称完成。
+  ## 文件与命令
+  仓库 liquidity-watermark-assistant-backend；具体文件和命令未知。
+  ## 验证
+  Ruff、AST 与差异检查当时通过；pytest 未运行。
+  ## 失败与风险
+  SSH push 当时失败；提交是否仍存在未知；缺少 pytest 和原需求语义。
+  ## 下一步
+  等待用户继续；B 核对 5ad0017、补跑相称测试并检查环境敏感文件后安全推送，A 再验证。
+  ## 原设备与更新时间
+  原设备 B；项目级记录日期 2026-08-01，原线程精确更新时间未知。
+
+## `portrait-program-manager`
+
+logical_task_id: portrait-program-manager
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 总包（项目经理）
+logical_project_id: liquidity-portrait
+local_thread_id: 019fc260-e522-7f72-adb1-852f821458f3
+pinned: false
+visible_shared_index: 11
+semantic_body_sha256: 69fc9b867f8d3da1960de0aa018a1dc2f0d005068856cc7fadc18e2488b93e2e
+semantic_body: |
+  ## 当前目标
+  统筹证件照项目前后端交付；原任务具体范围、计划和验收标准未保存。
+  ## 已完成
+  B 历史记录曾形成后端提交 02560c1，前端未提交；A 当前远端基线为后端 3278e94、前端 86b7cd1，尚无 B 提交上传证据。
+  ## 关键决定与原因
+  后端已验证内容与前端未解决风险分开处理；不能把重复跳转、重复扣次数和广告变量接线风险一并发布。
+  ## 文件与命令
+  仓库 liquidity-portrait-backend、liquidity-portrait-frontend；具体文件和命令未知。
+  ## 验证
+  后端 39 passed；前端 TypeScript/构建通过；aaa/ 与 default 排除。
+  ## 失败与风险
+  后端 push 当时失败；前端三类风险未解决且未提交；B 当前现场未知。
+  ## 下一步
+  等待用户继续；B 先核验 02560c1 并复测推送，前端解决风险后独立验证提交，A 再拉取。
+  ## 原设备与更新时间
+  原设备 B；项目级语义更新时间 2026-08-01，原线程精确更新时间未知。
+
+## `portrait-foreman`
+
+logical_task_id: portrait-foreman
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头
+logical_project_id: liquidity-portrait
+local_thread_id: 019fc260-e20a-7d53-a37f-6039de59dedf
+pinned: false
+visible_shared_index: 12
+semantic_body_sha256: d5fb58c8fb2521e89cdb8a6a1c9cee269faa3ae27098e2d2aa3aa90603462ee5
+semantic_body: |
+  ## 当前目标
+  协调证件照项目实施；原任务更具体业务目标未知。
+  ## 已完成
+  后端本地提交 02560c1 曾通过 39 项测试并 ahead 1；前端 TypeScript/构建通过但未提交。
+  ## 关键决定与原因
+  保留前端未解决风险和未确认内容；后端与前端分别验收，避免混合不同成熟度改动。
+  ## 文件与命令
+  仓库 liquidity-portrait-backend、liquidity-portrait-frontend；具体业务文件和原命令未知。
+  ## 验证
+  后端 39 passed；前端 TypeScript/构建通过；aaa/ 与 default 排除。
+  ## 失败与风险
+  后端 push 当时失败；前端重复跳转、重复扣次数和广告变量接线风险未解决。
+  ## 下一步
+  等待用户继续；先核验 B 工作树、提交和风险清单，再分仓处理验证。
+  ## 原设备与更新时间
+  原设备 B；项目级记录日期 2026-08-01，原线程精确更新时间未知。
+
+## `portrait-frontend`
+
+logical_task_id: portrait-frontend
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 前端部分
+logical_project_id: liquidity-portrait
+local_thread_id: 019fc260-de73-73a1-b7b8-2d8268c524aa
+pinned: false
+visible_shared_index: 13
+semantic_body_sha256: edc8818ed2e6c9b5ab1eae1e474925d0b7d015bf93558345c31b4bb11be0cee2
+semantic_body: |
+  ## 当前目标
+  负责证件照项目前端部分；具体页面或功能需求未知。
+  ## 已完成
+  项目级记录显示 TypeScript 与构建通过，但没有创建可确认提交。
+  ## 关键决定与原因
+  重复跳转、重复扣次数和广告变量接线风险解决前不提交；aaa/ 与 default 不纳入交付。
+  ## 文件与命令
+  仓库 liquidity-portrait-frontend；远端基线 86b7cd1；具体文件和命令未知。
+  ## 验证
+  TypeScript 和构建通过；未记录业务流程或浏览器端验收。
+  ## 失败与风险
+  三类业务风险未解决；B 本地改动当前是否仍存在未知。
+  ## 下一步
+  等待用户继续；B 定位并解决风险、补功能验证后独立提交推送，A 再验收。
+  ## 原设备与更新时间
+  原设备 B；项目级记录日期 2026-08-01，原线程精确更新时间未知。
+
+## `portrait-backend`
+
+logical_task_id: portrait-backend
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 后端部分
+logical_project_id: liquidity-portrait
+local_thread_id: 019fc260-db6d-72c2-bfec-f608a1a5587f
+pinned: false
+visible_shared_index: 14
+semantic_body_sha256: c7c3c5183e34e4d012d4b8edb2f4e53267ba0c3e3d859f4462da111d616448f8
+semantic_body: |
+  ## 当前目标
+  负责证件照项目后端部分；具体接口和业务要求未知。
+  ## 已完成
+  B 历史记录曾创建后端提交 02560c1，相对远端基线 3278e94 ahead 1。
+  ## 关键决定与原因
+  重新确认提交差异、安全性和 upstream 后才能上传；A 远端基线不能证明 B 本地已同步。
+  ## 文件与命令
+  仓库 liquidity-portrait-backend；具体文件和命令未知。
+  ## 验证
+  后端测试 39 passed。
+  ## 失败与风险
+  SSH push 当时失败；目前没有远端证据确认 02560c1 已上传，B 现场未知。
+  ## 下一步
+  等待用户继续；B fetch 后核验提交与工作树、复跑测试和安全检查，再安全推送，A 再验证。
+  ## 原设备与更新时间
+  原设备 B；项目级记录日期 2026-08-01，原线程精确更新时间未知。
+
+## `bmi-foreman`
+
+logical_task_id: bmi-foreman
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头
+logical_project_id: liquidity-bmi
+local_thread_id: 019fc261-8649-7912-8ecc-c62a28fbf2ae
+pinned: false
+visible_shared_index: 9
+semantic_body_sha256: e62afdc5f7a10b80b5aca779569f266df7673605f2f7705d20f5d13a1be67307
+semantic_body: |
+  ## 当前目标
+  统筹 BMI 前后端项目；原任务具体产品需求和验收标准未知。
+  ## 已完成
+  B 历史记录曾形成后端提交 37ee234、前端提交 7a0caf6，当时均 ahead 1；A 当前远端基线为后端 6b996a7、前端 9ce3b37，尚无上传证据。
+  ## 关键决定与原因
+  密钥与环境文件不得提交；必须在 B 原现场确认提交、验证和安全性后分别上传。
+  ## 文件与命令
+  仓库 liquidity-bmi-backend、liquidity-bmi-frontend；具体业务文件和命令未知。
+  ## 验证
+  后端 AST、前端 TypeScript/构建通过；pytest 未运行；记录称密钥与环境文件未提交。
+  ## 失败与风险
+  GitHub 443 push 当时失败；pytest 缺失；提交当前状态和功能语义未知。
+  ## 下一步
+  等待用户继续；B 核验 37ee234、7a0caf6，补后端测试和敏感检查后分别推送，A 再拉取验证。
+  ## 原设备与更新时间
+  原设备 B；项目级语义更新时间 2026-08-01，原线程精确更新时间未知。
+
+## `bmi-frontend`
+
+logical_task_id: bmi-frontend
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 前端部分
+logical_project_id: liquidity-bmi
+local_thread_id: 019fc261-8a0e-7913-8246-294d282fd702
+pinned: false
+visible_shared_index: 8
+semantic_body_sha256: 75757df4c707f8fe0cf6214c2072446d9e64b0d02b3c9a0b9ab2a34f66628260
+semantic_body: |
+  ## 当前目标
+  负责 BMI 项目前端部分；具体页面和业务需求未保存。
+  ## 已完成
+  B 历史记录曾创建前端提交 7a0caf6，相对远端基线 9ce3b37 ahead 1；尚无上传证据。
+  ## 关键决定与原因
+  环境文件和密钥不得进入提交；未取得原差异前不推断功能范围。
+  ## 文件与命令
+  仓库 liquidity-bmi-frontend；具体文件和命令未知。
+  ## 验证
+  TypeScript 与构建当时通过。
+  ## 失败与风险
+  GitHub 443 push 当时失败；提交是否仍在 B 本地未知；未记录功能测试和原需求。
+  ## 下一步
+  等待用户继续；B 核验提交与工作树、复跑检查并排除环境敏感文件后推送，A 再拉取。
+  ## 原设备与更新时间
+  原设备 B；项目级记录日期 2026-08-01，原线程精确更新时间未知。
+
+## `bmi-backend`
+
+logical_task_id: bmi-backend
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 后端部分
+logical_project_id: liquidity-bmi
+local_thread_id: 019fc261-8ce2-7ca2-b0ce-e0415a602468
+pinned: false
+visible_shared_index: 7
+semantic_body_sha256: 7641cf6c3a98d45ebf3aaf5b6307fc6f699665758b3f73852ab74e221ffe4848
+semantic_body: |
+  ## 当前目标
+  负责 BMI 项目后端部分；具体接口和业务需求未保存。
+  ## 已完成
+  B 历史记录曾创建后端提交 37ee234，相对远端基线 6b996a7 ahead 1；尚无上传证据。
+  ## 关键决定与原因
+  密钥与环境文件不得提交；pytest 未执行前不能把 AST 通过视为完整验收。
+  ## 文件与命令
+  仓库 liquidity-bmi-backend；具体文件和命令未知。
+  ## 验证
+  后端 AST 通过；pytest 未运行；记录称密钥与环境文件未提交。
+  ## 失败与风险
+  GitHub 443 push 当时失败；提交状态未知；测试覆盖和原需求语义不足。
+  ## 下一步
+  等待用户继续；B 核验 37ee234，运行 pytest/相称测试与安全检查后推送，A 再验证。
+  ## 原设备与更新时间
+  原设备 B；项目级记录日期 2026-08-01，原线程精确更新时间未知。
+
+## `canvas-garment-foreman`
+
+logical_task_id: canvas-garment-foreman
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头
+logical_project_id: canvas-garment
+local_thread_id: 019fc25f-c6ec-7fb0-9520-f47cba762dd1
+pinned: false
+visible_shared_index: 17
+semantic_body_sha256: d81b0ab365c6d517046e917179d7024ec7d0639f83c4dfb5590d2cdd25614dbc
+semantic_body: |
+  ## 当前目标
+  统筹服装品牌、印花及成衣项目；原任务具体业务需求未保存。
+  ## 已完成
+  项目级记录显示正式图片、脚本、预览和 XLSX 曾通过检查；A 已克隆并登记，远端基线 main/093d896。
+  ## 关键决定与原因
+  未确认内容由原业务任务确认后处理；node_modules Junction 和检查缓存必须排除。
+  ## 文件与命令
+  仓库 canvas-garment；具体业务文件和命令未知。
+  ## 验证
+  项目级检查覆盖正式图片、脚本、预览和 XLSX；发现约 298 MB node_modules Junction 与缓存；A 当前工作树干净且 0/0。
+  ## 失败与风险
+  B 端大量本地内容的业务归属与当前状态未知，不能由 A 推断或覆盖。
+  ## 下一步
+  等待用户继续；先盘点原现场差异、排除依赖缓存、确认交付语义并验证后再提交。
+  ## 原设备与更新时间
+  原设备 B；实体和项目级状态于 2026-08-01 确认，原对话精确更新时间未知。
+
+## `funhub-space-foreman`
+
+logical_task_id: funhub-space-foreman
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头
+logical_project_id: funhub-space
+local_thread_id: 019fc261-9036-79b1-890d-3f478fb6b172
+pinned: false
+visible_shared_index: 6
+semantic_body_sha256: 5ba9e80c07e591291060adc015488becbdc3c31003b48c9a3c21fb1d782ae56d
+semantic_body: |
+  ## 当前目标
+  统筹花果山社区及衍生应用的八个独立 Git 仓库；原任务更具体业务目标未知。
+  ## 已完成
+  A 已取得 6 个仓库并与 upstream 对齐；B 历史记录称 funhub 曾有两个未推送提交及其他未确认改动，A 未取得其离线现场。
+  ## 关键决定与原因
+  八仓独立取得、审查和验证；一个仓库阻塞不覆盖其他仓库。敏感 .env 和历史凭据需先轮换并停止跟踪。
+  ## 文件与命令
+  八仓包括 aime-bridge-backend、funhub、funhub-CandyArt、funhub-taro、funhub-WordSmiths、funhub-WordSmiths-backend、english-talk-trainer、MountainFruitCottage。
+  ## 验证
+  A 六个可访问仓库干净且 0/0；B 曾记录 aime 后端 31 tests、taro 局部 ESLint、WordSmiths 后端 8 tests 通过。
+  ## 失败与风险
+  两个来源 Repository not found；B 的 aime 曾 behind 1 且有 19 项改动；funhub 两提交未确认；WordSmiths 后端远端跟踪含敏感值的 .env。
+  ## 下一步
+  等待用户继续；修复来源、B 核验并推送本地内容、轮换凭据并停止跟踪环境文件后逐仓验证。
+  ## 原设备与更新时间
+  原设备 B；项目级事实至 2026-08-01，安全与同步事实至 2026-08-02。
+
+## `funhub-repair-computer`
+
+logical_task_id: funhub-repair-computer
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 修电脑的
+logical_project_id: funhub-space
+local_thread_id: 019fc261-9a6e-7b12-9fc3-86e8ed7ac364
+pinned: false
+visible_shared_index: 3
+semantic_body_sha256: de06ac45df814f37d2a298aa4250719d8c0dec141e20782abe0f56723f00a6fe
+semantic_body: |
+  ## 当前目标
+  “修电脑的”原任务具体目标未知；目前只确认标题、项目归属和 B 端实体。
+  ## 已完成
+  未知；项目级已知 A 已取得 6/8 个仓库，B 可能保留未推送或未确认现场。
+  ## 关键决定与原因
+  不得仅凭标题推断设备、软件、仓库或故障，必须先恢复原需求边界。
+  ## 文件与命令
+  未知；无法从现有记录唯一映射到某个组成仓库。
+  ## 验证
+  没有独立测试、命令、文件或验收记录。
+  ## 失败与风险
+  语义不足；项目存在不可达仓库、未推送内容和凭据风险，错误映射可能触碰错误现场。
+  ## 下一步
+  等待用户继续；先确认具体故障、目标仓库和期望结果，再读取最小必要现场。
+  ## 原设备与更新时间
+  原设备 B；实体于 2026-08-01 确认可见，原对话精确更新时间未知。
+
+## `funhub-press-to-talk-fix`
+
+logical_task_id: funhub-press-to-talk-fix
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 修复按住说话误弹窗
+logical_project_id: funhub-space
+local_thread_id: 019fc261-9310-7ed0-9b27-e6be5f48ed56
+pinned: false
+visible_shared_index: 5
+semantic_body_sha256: ba2431b70dff9e0250bd942e595b2399ffd2be8b6c601db01ed8d38a7600afd0
+semantic_body: |
+  ## 当前目标
+  按标题修复“按住说话”交互触发误弹窗；触发条件、平台、目标仓库和验收标准未保存。
+  ## 已完成
+  未知；没有证据证明缺陷已修复或发布。
+  ## 关键决定与原因
+  只能把标题视为已知需求，不臆测弹窗类型、根因或实现位置；应先复现。
+  ## 文件与命令
+  未知；不能唯一映射到 funhub、funhub-taro 或其他仓库。
+  ## 验证
+  未记录复现步骤、自动化测试、设备验证或验收结果。
+  ## 失败与风险
+  语义不足且项目有多仓、未推送现场和敏感配置风险。
+  ## 下一步
+  等待用户继续；确认客户端、表现和复现步骤，定位正确仓库，补回归用例后修复验证。
+  ## 原设备与更新时间
+  原设备 B；实体于 2026-08-01 确认可见，原对话精确更新时间未知。
+
+## `funhub-aime-frontend`
+
+logical_task_id: funhub-aime-frontend
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 开发极简聊天界面
+logical_project_id: funhub-space
+local_thread_id: 019fc261-96f2-7aa1-bdbf-cb0acdb31162
+pinned: false
+visible_shared_index: 4
+semantic_body_sha256: bf450d3bb9f7d61bd68c7883923183f1da5f971fd2b636ca1d7c7e39abae21c5
+semantic_body: |
+  ## 当前目标
+  按标题开发极简聊天界面；页面范围、设计稿、技术栈、接口和验收标准未保存。
+  ## 已完成
+  未知；没有可归属到该原任务的完成记录或提交证据。
+  ## 关键决定与原因
+  不得仅凭项目级状态推断界面已实现，也不得在未确认接口和目标仓库前编码。
+  ## 文件与命令
+  未知；不能唯一确定对应 funhub、funhub-taro、funhub-WordSmiths 或其他前端仓库。
+  ## 验证
+  未记录 UI、TypeScript、构建、浏览器或真机验收。
+  ## 失败与风险
+  原需求不足，多前端仓库并存且 B 可能有未推送现场。
+  ## 下一步
+  等待用户继续；确认目标端、仓库、界面范围、设计与 API 契约，再盘点代码实施验证。
+  ## 原设备与更新时间
+  原设备 B；实体于 2026-08-01 确认可见，原对话精确更新时间未知。
+
+## `funhub-aime-backend`
+
+logical_task_id: funhub-aime-backend
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 对齐 FunHub AI 服务
+logical_project_id: funhub-space
+local_thread_id: 019fc261-9e07-7ec0-b9b5-b4dbb646ce3e
+pinned: false
+visible_shared_index: 2
+semantic_body_sha256: e5bb54ee66e494b5f2eb3dc2f5d6427817f8724d81debdc671887947b6426c48
+semantic_body: |
+  ## 当前目标
+  按标题对齐 FunHub AI 服务；具体协议、接口差异和验收标准未保存；可能相关仓库为 aime-bridge-backend，但未明确绑定。
+  ## 已完成
+  完成内容未知；A 端远端基线 703f0c1，B 曾有 19 项本地改动且 behind 1。
+  ## 关键决定与原因
+  B 脏工作树与远端前进并存时必须可恢复保护后安全对齐；敏感 .env 不得提交或复述。
+  ## 文件与命令
+  候选仓库 aime-bridge-backend；具体文件、接口和命令未知。
+  ## 验证
+  项目级曾记录 31 passed；这不直接证明原任务已完成。
+  ## 失败与风险
+  B 原现场可能仍有 behind 1 + 19 项改动；环境文件进入远端且凭据风险需处理。
+  ## 下一步
+  等待用户继续；先确认目标 API 和仓库，在 B 保护改动、对齐、审查和复测，轮换凭据并停止跟踪环境文件后提交。
+  ## 原设备与更新时间
+  原设备 B；项目事实至 2026-08-01，安全补充至 2026-08-02。
+
+## `lottery-foreman`
+
+logical_task_id: lottery-foreman
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头
+logical_project_id: lottery
+local_thread_id: 019f4af1-d1fd-78a3-a1e2-77f1ffdf1536
+pinned: false
+visible_shared_index: 38
+semantic_body_sha256: 91c0d85de531d0565bdc88fefe49b6a589b03b9ea873c01f5e66205b9d8e4089
+semantic_body: |
+  ## 当前目标
+  统筹彩票前后端项目并保持算法与界面可续接。
+  ## 已完成
+  历史已把候选算法改为合法组合空间等概率抽样并完成前端视觉升级。
+  ## 关键决定与原因
+  前后端独立仓库管理；不得把概率等价性与玄学解释混淆。
+  ## 文件与命令
+  lottery-calculation-backend、lottery-calculation-frontend。
+  ## 验证
+  后端 e2675e5、前端 ea3f326，均 clean、0/0。
+  ## 失败与风险
+  当前没有新待办或未推送内容；原线程路径为旧路径但实体仍保留。
+  ## 下一步
+  等待用户继续业务需求。
+  ## 原设备与更新时间
+  设备 A，语义更新至 2026-08-01。
+
+## `demo-foreman`
+
+logical_task_id: demo-foreman
+entity_state: MISSING
+semantic_state: MISSING
+title: 包工头
+logical_project_id: demo
+local_thread_id: MISSING
+pinned: MISSING
+visible_shared_index: MISSING
+semantic_body_sha256: MISSING
+semantic_body: MISSING
