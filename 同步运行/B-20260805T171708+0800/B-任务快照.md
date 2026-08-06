@@ -9,9 +9,9 @@
 - 开始时有效布局版本：`3`
 - 开始时有效布局 SHA-256：`5310e24b57cfc72e401f56e2e6d775351fa701fd8fb0d1f451b62ca92cb5d81e`
 - 开始时上下文提交：`70db5657edde249cd56cabc76e761af01f07a738`
-- 快照时间：2026-08-05 17:17（Asia/Shanghai）
+- 快照时间：2026-08-06（Asia/Shanghai）
 - 正式任务来源：Codex 39 项定向精确回读与 `list_threads(limit=50)` 可见子序列回读。
-- 快照结论：目标 39 项全部实体 `PRESENT`、语义 `PRESENT`；正文均由本轮正式回读生成并逐项计算 SHA-256。任务任意排序能力仍不可用，未出现在最近 50 项列表中的共享索引如实记为 `UNKNOWN`；本文件不是布局成功回执。
+- 快照结论：目标 39 项全部实体与语义 `PRESENT`；任务块已按交接包唯一目标顺序重排，三份截断正文已补全，并纳入 vid-mat-lab 提交 `16694cf` 及后续提交 `70d371b`。逐正文 SHA 已重算；本文件仍不是布局成功回执。
 
 ## `mission-context-current-sync`
 
@@ -23,24 +23,24 @@ logical_project_id: mission-context
 local_thread_id: 019fa8cf-205c-7c71-8350-e78edd3b712c
 pinned: false
 visible_shared_index: UNKNOWN
-semantic_body_sha256: b31f43aff7c7ff7de2f95e53b611583be0406914e7684256bbf4524cfe6197f1
+semantic_body_sha256: e1f8594ad06bb62d0cff73ecf5b4dba3137e8c108e3932392690183ca4150456
 semantic_body: |
   ## 当前目标
-  未发现新增说明。
+  执行完整双设备同步运行 `B-20260805T171708+0800`，对齐 11 个共同项目、39 个任务语义、侧边栏布局和全部 Git 仓库。
   ## 已完成
-  没有全部上传成功，不能算同步完成。 - 本轮新增 5 个 D 盘本地提交： - 去水印后端 `5ad0017` - 去水印前端 `6a8f6ac` - 证件照后端 `02560c1` - BMI 后端 `37ee234` - BMI 前端 `7a0caf6` - 5 个提交目前都领先远端 1 个；本轮新推送数量为 0。 - 上下文的 3 份同步记录已更新并检查通过，但 `.git/index.lock` 只读，尚未提交、上传： - [今日同步记录](D:/.aaProject-Bruce/CodexMissionContext/每日同步/2026-08-01.md) - [维护任务记录](D:/.aaProject-Bruce/CodexMissionContext/项目上下文/CodexMissionContext/任务记录/双设备同步维护.md) - [设备 B 状态](D:/.aaProject-Bruce/CodexMissionContext/设备/B/已应用清单版本.md) - 其他项目没有新提交：Aidrama、vid-mat-lab 存在业务歧义；canvas、funhub、Demo 受审批或权限阻塞；lottery 工作树干净。 - 我使用 [GitHub 官方 SSH 主机密钥](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints)进行了严格校验重试，没有关闭 SSH 安全检查，但网络命令仍停在审批边界。 - 另一设备维护任务不可达，交接通知未送达。因此明天那台电脑目前看不到这 5 个提交和本轮记录。 - 另发现 funhub 的语音服务凭据曾进入 Git 历史，必须尽快在服务端轮换。 已给仍处于审批等待的项目任务排队发送停止指令，不会主动继续改动。 ::git-stage{cwd="D:\.aaProject-Bruce\liquidity-watermark-assistant\liquidity-watermark-assistant-backend"} ::git-commit{cwd="D:\.aaProject-Bruce\liquidity-watermark-assistant\liquidity-watermark-assistant-backend"} ::git-stage{cwd="D:\.aaProject-Bruce\liquidity-watermar
+  设备 B 已精确读取 39 个任务；设备 A 已发布同运行 A 快照并指出 B 快照的顺序、截断正文与过期语义问题。2026-08-06 B 已拉取上下文至 `ec8471e`，开始在合并包生成前刷新本端快照。
   ## 关键决定与原因
-  保持该任务既有项目边界与角色职责；本次同步只导入可续接语义并等待用户继续，不自动执行旧需求。
+  沿用尚未生成合并包的同一运行；只由 B 更新 B 快照。39 个任务块必须严格按交接包顺序，正文保留八节完整语义并重算 SHA；不自动执行任何旧业务。
   ## 文件与命令
-  现在已有 5 个业务提交安全落在 D 盘本地，正在做最后两仓判定：`vid-mat-lab` 会把有歧义的第 002/004 集内容留住不提交；`canvas-garment` 正在隔离正式交付与 298 MB 缓存。上传仍受网络/SSH 校验限制，我正在用 GitHub 官方主机密钥做安全重试，没有关闭 SSH 校验。
+  `同步清单/完全对齐交接包.md`、`同步运行/B-20260805T171708+0800/A-任务快照.md`、`B-任务快照.md`、`运行状态.md`；`脚本/同步上下文.sh 开始`。
   ## 验证
-  设备 B 已通过正式任务读取能力精确回读线程 019fa8cf-205c-7c71-8350-e78edd3b712c；实体、标题与项目映射可用。
+  A 快照为 38 项 PRESENT、1 项 MISSING；B 端 39 个映射均存在。本轮已再次精确回读三份截断任务、两个 vid-mat-lab 任务和维护任务。
   ## 失败与风险
-  最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
+  A 端仍缺 `demo-foreman`；项目排序能力和双端回执尚未验证。Git 仓库中仍可能存在冲突、脏现场或不可访问来源，未完成前不得声称全部同步。
   ## 下一步
-  等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
+  完成 B 快照重排和正文校验；再执行全项目两阶段 Git 复核，生成唯一合并包并投递同版语义，最后形成双端回执。
   ## 原设备与更新时间
-  设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
+  设备 B，2026-08-06（Asia/Shanghai）。
 
 ## `mission-context-maintenance`
 
@@ -52,24 +52,24 @@ logical_project_id: mission-context
 local_thread_id: 019fa8d5-32b4-7670-816e-b0dc862ee35c
 pinned: false
 visible_shared_index: 2
-semantic_body_sha256: 219063e242a3a1d914aea7f5b188dd9d268e40d8f744740ca668c564295720e8
+semantic_body_sha256: ad764defb571af503fcfb5d69dcb985a2b0afcab7cef16d72486d20ce0dca32b
 semantic_body: |
   ## 当前目标
-  未发现新增说明。
+  维护运行 `B-20260805T171708+0800`，完成本机项目、任务语义、Git 和布局验收并与 A 端合并。
   ## 已完成
-  上下文已导入，等待继续
+  B 已取得 A 新快照和最新交接。A 已验证其 38 个任务与 18 个业务仓库；B 正在修复自己快照的任务顺序、三份截断正文并更新 vid-mat-lab 语义。
   ## 关键决定与原因
-  保持该任务既有项目边界与角色职责；本次同步只导入可续接语义并等待用户继续，不自动执行旧需求。
+  A、B 快照职责分离；A 快照不覆盖。只有两份快照输入验收通过后才生成合并包，合并包 39 项全部 READY 后才允许投递语义和验收布局。
   ## 文件与命令
-  我会按指定范围仅完整读取这两个上下文文件；不会运行同步脚本、继续旧任务或修改文件。
+  `同步运行/B-20260805T171708+0800/`、`全局技能/check-projects/SKILL.md`、`全局技能/check-projects/scripts/inspect-project-repos.sh`。
   ## 验证
-  设备 B 已通过正式任务读取能力精确回读线程 019fa8d5-32b4-7670-816e-b0dc862ee35c；实体、标题与项目映射可用。
+  权威上下文已快进至 `ec8471e`；A 快照整文件已在远端存在，B 的 39 个正式线程映射可用。
   ## 失败与风险
-  最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
+  旧 A 维护线程 ID 曾失效；A 缺 Demo 项目与任务；B 仍需重新盘点所有仓库，Aime 历史冲突和两个 FunHub 来源可能继续阻塞。
   ## 下一步
-  等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
+  完成刷新快照与 SHA 验收，统一 fetch 所有共同项目，安全提交可验证改动；随后生成合并包、语义投递和 B 回执。
   ## 原设备与更新时间
-  设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
+  设备 B，2026-08-06（Asia/Shanghai）。
 
 ## `ai-workflow-00-foreman`
 
@@ -99,7 +99,6 @@ semantic_body: |
   等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
   ## 原设备与更新时间
   设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
-
 ## `ai-workflow-01-market-researcher`
 
 logical_task_id: ai-workflow-01-market-researcher
@@ -448,6 +447,64 @@ semantic_body: |
   ## 原设备与更新时间
   设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
 
+## `vid-mat-lab-foreman`
+
+logical_task_id: vid-mat-lab-foreman
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头
+logical_project_id: vid-mat-lab
+local_thread_id: 019f596c-f12d-7702-9b7e-85d4b536b514
+pinned: false
+visible_shared_index: 1
+semantic_body_sha256: e72647f82266692ce98b4110a19bb5c25febc5a2155e3e9b8c525850d8bc9807
+semantic_body: |
+  ## 当前目标
+  持续制作“内耗儿绝缘体”小耗儿固定 IP 短视频，保持角色身份一致并交付可直接生成的单集制作包。
+  ## 已完成
+  第 013 集已以小耗儿单主角 v2 提交 `16694cf` 并推送，含 17 张 941×1672 关键帧、17 行分镜表和角色参考；之后第 012 集《别让脑补替你加班》制作包已提交 `70d371b` 并推送，包含图片与视频提示词、剧本、剪辑及发布说明。
+  ## 关键决定与原因
+  小耗儿身份锁定为最高角色基线；第 012 集采用“领导说再看看→脑补失控→按 STOP→直接追问”的反内耗结构。口播、口型、环境音和音效写入视频提示词，剪映只保留原声并匹配响度。
+  ## 文件与命令
+  `episodes/013-payday-wakeup/v2/`；`episodes/012-dance-off-the-stress/` 下 README、图片/视频提示词、production script、edit plan、sound-music 与 publishing 文件。
+  ## 验证
+  第 013 集 17 张图片尺寸、17 行分镜和 Markdown 链接通过；第 012 集 5 个镜头、总时长 17 秒、分镜零警告、文档链接无缺失。提交 `16694cf` 与 `70d371b` 均已推送。
+  ## 失败与风险
+  第 012 集尚未生成正式图片和视频；角色身份、固定青年男声音色、禁止改词与音色跳变仍需在实际生成中逐镜验收。
+  ## 下一步
+  先按第 012 集图片提示词生成 5 张关键帧；继续以仓库最新远端为准，不覆盖第 013 集 v2 和历史保留版本。
+  ## 原设备与更新时间
+  设备 B，语义更新至 2026-08-06（Asia/Shanghai）。
+
+## `vid-mat-lab-foreman-2`
+
+logical_task_id: vid-mat-lab-foreman-2
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头 (2)
+logical_project_id: vid-mat-lab
+local_thread_id: 019fc2a5-a242-7401-a3e5-dcacecc55016
+pinned: false
+visible_shared_index: UNKNOWN
+semantic_body_sha256: 8d5c93adfa00a40a29e87cc3d907dbf2b3135eb4f9efd854332ce7280c07ca07
+semantic_body: |
+  ## 当前目标
+  作为 D 盘正式 `vid-mat-lab` 项目的备用包工头镜像，保存可续接语义并等待用户明确派发。
+  ## 已完成
+  已导入交接并确认后续仅使用 `D:\.aaProject-Bruce\vid-mat-lab`，不再使用旧 C 盘 worktree。主任务已完成第 013 集小耗儿单主角 v2 提交 `16694cf`，并完成第 012 集制作包提交 `70d371b`。
+  ## 关键决定与原因
+  本镜像只用于可见任务并集与语义接续，不自动重复执行主包工头旧业务；所有代码和素材以 D 盘唯一正式仓库及其远端为准。
+  ## 文件与命令
+  D 盘 `vid-mat-lab`；相关交付位于 `episodes/013-payday-wakeup/v2/` 与 `episodes/012-dance-off-the-stress/`。
+  ## 验证
+  线程实体、标题、项目归属和 D 盘路径已正式回读；主仓提交事实以 Git 最终复核为准。
+  ## 失败与风险
+  若主任务继续产生新提交，本镜像摘要可能滞后；继续前必须先 fetch 并读取项目最新交接，避免重复或覆盖。
+  ## 下一步
+  等待用户继续；收到明确请求时从 D 盘正式仓库最新提交接续。
+  ## 原设备与更新时间
+  设备 B，语义更新至 2026-08-06（Asia/Shanghai）。
+
 ## `aidrama-negative-review-reaper`
 
 logical_task_id: aidrama-negative-review-reaper
@@ -487,24 +544,24 @@ logical_project_id: aidrama-project
 local_thread_id: 019f9ed0-bc3f-7bb1-a687-57ed6e802c60
 pinned: false
 visible_shared_index: 20
-semantic_body_sha256: 9ea90b813189413b68102ab5f842b18c6992e9cfd4a2d2e313692f556bdb5b70
+semantic_body_sha256: 915d6ca983ce1348bac1075cebb7021abc436bc7f690095d440e5f63bf72c72b
 semantic_body: |
   ## 当前目标
-  未发现新增说明。
+  作为 AI 漫剧咨询专家，帮助用户判断生产方案、理解工具，并建立适合副业的标准化批量生产线。
   ## 已完成
-  明白。从现在开始，我会以你的“AI咨询专家”身份配合你：帮你判断方案是否靠谱、把复杂工具讲明白，并围绕AI漫剧生产持续帮你提效。 先说结论：你发来的这套方法，整体方向大约有七八成是对的，但里面夹杂了一些营销式的效率和成本数据。真正值得学习的是“标准化、资产复用、批量处理”；不能直接相信的是“10分钟一集、几毛钱一集、完全无人值守、一天几十集”。 ## 一、这段内容哪些有道理？ 最核心的一句话是对的： > 批量生产不是把同一套手工流程重复做几十次，而是先建立标准，再让工具按照标准重复执行。 具体来说，以下几项非常值得采用： 1. 角色资产固定 每个主要角色建立一套“角色身份证”： - 正面、侧面、全身参考图 - 发型、服装、年龄、身材 - 固定提示词 - 固定音色 - 常用表情和动作 以后生成镜头时调用同一套资产，确实可以减少反复设计角色的工作。 但“有参考图就一定不会变脸”是不准确的。AI仍可能改变五官、衣服和年龄，需要参考图控制、LoRA等技术，并保留人工筛选。 2. 分镜表标准化 这个非常重要。以后每一集都按照统一表格生产，例如： | 镜号 | 时长 | 景别 | 角色 | 画面描述 | 台词 | 音效 | 画面文件 | |---|---:|---|---|---|---|---|---| | 001 | 4秒 | 近景 | 林辰 | 林辰抬头冷笑 | 就凭你？ | 反转音效 | EP01_001.mp4 | 表格一旦规范，后续才能自动生成提示词、配音、字幕、文件名和剪辑时间线。 3. 配音、字幕批量化 方向正确： - 角色和音色固定映射； - 台词按角色拆分； - TTS批量生成语音； - 根据语音生成字幕时间码； - 输出统一命名的音频和字幕。 剪映/CapCut确实提供文字转语音、自动字幕等能力；自动字幕生成后通常还需要校对人名、专有名词和断句。[CapCut自动字幕说明](https://www.capcut.com/help/how-to-recognise-subtitles) 4. 文件统一命名 这看起来很简单，却是自动化的基础。建议从一开始就使用： ```text EP01_SC001_image.png EP01_SC001_video.mp4 EP01_SC001_voice.wav EP01_SC001_subtitle.srt ``` 否则素材一多，后面会花大量时间找文件、对镜号、纠正错位。 5. 模板化剪辑 固定画布、字幕、音量、片头、片尾和导出参数，确实能明显提速。 但是，普通剪映并不等于成熟的“自动剪辑系统”。把素材按顺序导进去
+  已给出 AI 漫剧批次生产架构：固定角色、声音和场景资产，使用标准分镜表驱动 ComfyUI、TTS、字幕与 FFmpeg 自动合成，再由人工集中质检；并区分可靠原则与夸大宣传。
   ## 关键决定与原因
-  保持该任务既有项目边界与角色职责；本次同步只导入可续接语义并等待用户继续，不自动执行旧需求。
+  先把一集稳定做对，再逐步自动化；“机器批量生产、人工集中验收”比完全无人值守现实。ComfyUI 是节点式生成工作台，不是模型或剪辑软件，本地部署仍有硬件、电费和维护成本。
   ## 文件与命令
-  我先把这段内容拆成“靠谱的生产原则、容易夸大的效率/成本、需要补充的技术细节”三部分，再用尽量入门的方式解释 ComfyUI（你写的 Conmohua UI 应该就是它）。我也会核一下当前工具能力，避免把营销话术当成事实。
+  建议资产目录、角色音色映射表、标准分镜表、统一素材命名（如 `EP01_SC001_*`）、FFmpeg 自动合成流程；参考 ComfyUI 官方文档与 GitHub。
   ## 验证
-  设备 B 已通过正式任务读取能力精确回读线程 019f9ed0-bc3f-7bb1-a687-57ed6e802c60；实体、标题与项目映射可用。
+  已覆盖角色一致性、配音字幕、文件命名、模板剪辑、人工质检、成本与商业授权风险，并给出从 1—3 集试产到整季流水线的实施顺序。
   ## 失败与风险
-  最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
+  参考图不能保证绝不变脸；效率和成本取决于返工、模型、商业授权与硬件。平台合规、版权和声音授权仍需逐项确认。
   ## 下一步
-  等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
+  等待用户提供现有角色、剧本、制作流程或电脑配置，再判断哪些步骤用剪映、ComfyUI、TTS 或 FFmpeg 自动化。
   ## 原设备与更新时间
-  设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
+  设备 B，语义更新至 2026-08-05（Asia/Shanghai）。
 
 ## `aidrama-worker-comeback`
 
@@ -564,151 +621,6 @@ semantic_body: |
   ## 原设备与更新时间
   设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
 
-## `vid-mat-lab-foreman`
-
-logical_task_id: vid-mat-lab-foreman
-entity_state: PRESENT
-semantic_state: PRESENT
-title: 包工头
-logical_project_id: vid-mat-lab
-local_thread_id: 019f596c-f12d-7702-9b7e-85d4b536b514
-pinned: false
-visible_shared_index: 1
-semantic_body_sha256: a07e776ce8a7015b12498f7b2b7f875141077b66291d099ede8703287118d16c
-semantic_body: |
-  ## 当前目标
-  未发现新增说明。
-  ## 已完成
-  已经全部完成并推送。 ![小内耗永久原版底稿](D:/%2EaaProject-Bruce/vid-mat-lab/assets/brand/resistor-mascot-identity-master-original.jpg) - 这张图已锁定为 `vid-mat-lab` 永久最高身份底稿。 - 未来只能改变服装、动作、道具、场景、材质和光线；不得改变脸型、五官比例、身体结构、四肢比例与核心标志。 - 原始 JPG、PNG 工作副本、角色锁定规则和跨设备项目概览均已更新。 - 第 009 集视频已归档：10 秒、720×1264、24 fps。 - 项目提交：`74323e3` - GitHub `main` 推送成功。 - 跨设备上下文同步成功：`f338f3b` - 其他未提交内容均未带入本次提交。 文件入口： - [永久原版底稿](D:/.aaProject-Bruce/vid-mat-lab/assets/brand/resistor-mascot-identity-master-original.jpg) - [永久锁定规则](D:/.aaProject-Bruce/vid-mat-lab/assets/brand/ORIGINAL_MASTER_LOCK.md) - [第009集视频](D:/.aaProject-Bruce/vid-mat-lab/episodes/009-wealth-god-found-you/03-visuals/generated-videos-v1/01-wealth-god-scattering-gold-grok-v1.mp4) - [第009集总入口](D:/.aaProject-Bruce/vid-mat-lab/episodes/009-wealth-god-found-you/README.md) ::git-stage{cwd="D:\.aaProject-Bruce\vid-mat-lab"} ::git-commit{cwd="D:\.aaProject-Bruce\vid-mat-lab"} ::git-push{cwd="D:\.aaProject-Bruce\vid-mat-lab" branch="main"}
-  ## 关键决定与原因
-  保持该任务既有项目边界与角色职责；本次同步只导入可续接语义并等待用户继续，不自动执行旧需求。
-  ## 文件与命令
-  项目仓库已经推送成功。现在把同一条“永久原版底稿”规则写入跨设备项目概览，这样以后换电脑或开新任务，也会优先读取这张图，不会被后续生成图覆盖。
-  ## 验证
-  设备 B 已通过正式任务读取能力精确回读线程 019f596c-f12d-7702-9b7e-85d4b536b514；实体、标题与项目映射可用。
-  ## 失败与风险
-  最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
-  ## 下一步
-  等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
-  ## 原设备与更新时间
-  设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
-
-## `vid-mat-lab-foreman-2`
-
-logical_task_id: vid-mat-lab-foreman-2
-entity_state: PRESENT
-semantic_state: PRESENT
-title: 包工头 (2)
-logical_project_id: vid-mat-lab
-local_thread_id: 019fc2a5-a242-7401-a3e5-dcacecc55016
-pinned: false
-visible_shared_index: UNKNOWN
-semantic_body_sha256: a03fc871b9a9b57b4f92441cff12127d7da713663cbefcc0ebcf840f744e3e61
-semantic_body: |
-  ## 当前目标
-  未发现新增说明。
-  ## 已完成
-  已接收交接上下文。本任务后续仅使用 D 盘正式项目 `D:\.aaProject-Bruce\vid-mat-lab`，当前等待你的下一步指令。
-  ## 关键决定与原因
-  保持该任务既有项目边界与角色职责；本次同步只导入可续接语义并等待用户继续，不自动执行旧需求。
-  ## 文件与命令
-  未发现额外的已完成事项。
-  ## 验证
-  设备 B 已通过正式任务读取能力精确回读线程 019fc2a5-a242-7401-a3e5-dcacecc55016；实体、标题与项目映射可用。
-  ## 失败与风险
-  最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
-  ## 下一步
-  等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
-  ## 原设备与更新时间
-  设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
-
-## `lottery-foreman`
-
-logical_task_id: lottery-foreman
-entity_state: PRESENT
-semantic_state: PRESENT
-title: 包工头
-logical_project_id: lottery
-local_thread_id: 019fbdee-4ee1-73b0-bd39-e9d2837a7370
-pinned: false
-visible_shared_index: 18
-semantic_body_sha256: 2e3bbbac9f0ab4d8d33cf19fa93df8d4f7212b91d49e6a8d948eafdf9ae999c4
-semantic_body: |
-  ## 当前目标
-  未发现新增说明。
-  ## 已完成
-  精简上下文已导入，等待用户继续。
-  ## 关键决定与原因
-  保持该任务既有项目边界与角色职责；本次同步只导入可续接语义并等待用户继续，不自动执行旧需求。
-  ## 文件与命令
-  我先按工作区入口读取全局规则；不会修改文件或执行任何旧需求。
-  ## 验证
-  设备 B 已通过正式任务读取能力精确回读线程 019fbdee-4ee1-73b0-bd39-e9d2837a7370；实体、标题与项目映射可用。
-  ## 失败与风险
-  最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
-  ## 下一步
-  等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
-  ## 原设备与更新时间
-  设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
-
-## `canvas-garment-foreman`
-
-logical_task_id: canvas-garment-foreman
-entity_state: PRESENT
-semantic_state: PRESENT
-title: 包工头
-logical_project_id: canvas-garment
-local_thread_id: 019f5034-234e-77e3-a2b8-c6a76b72e414
-pinned: false
-visible_shared_index: 19
-semantic_body_sha256: d1ebee4e44ffc9355522c6f74afbaad2ed3d800dd9d679b73834d40887ff0c2b
-semantic_body: |
-  ## 当前目标
-  未发现新增说明。
-  ## 已完成
-  明白。你是让我稍后把之前提到的那几种**IP/印花方向重新找出来，整理成一份清晰的方案表**，每种方案写清： - 核心概念 - 面向人群 - 印花长什么样 - 衣服怎么搭配 - 适合什么印花工艺 - 优缺点和推荐顺序 然后我们从里面选一个，继续做成真正的印花图。之前具体是三种还是五种，我会重新核对，不凭记忆乱写。
-  ## 关键决定与原因
-  保持该任务既有项目边界与角色职责；本次同步只导入可续接语义并等待用户继续，不自动执行旧需求。
-  ## 文件与命令
-  可以，先不出图，只列方向。我按“人群明确、不过分浮夸、适合简单印花”整理成5种： | 排名 | 方案方向 | 主要人群 | 给人的感觉 | 印花可以做什么 | 首发判断 | |---|---|---|---|---|---| | 1 | **互联网故障人格** | 22–35岁程序员、产品、互联网从业者 | 冷幽默、懂行、有一点反骨 | 404情绪、系统报错、低电量、人生加载失败等原创符号 | **最推荐**，你自己就是互联网从业者，内容更真实 | | 2 | **静音反骨上班族** | 23–35岁有工作压力的年轻人 | 表面正常，内心不服；克制但有态度 | “正在配合”“拒绝内耗”等小字搭配原创角色 | 人群更大，容易传播，但文案要避免太常见 | | 3 | **情绪维修站** | 18–30岁大学生、初入职场人群 | 治愈、松弛、带一点丧 | 情绪维修员、破损小机器人、心情补丁、能量充电 | 男女都能穿，适合发展长期角色IP | | 4 | **下班出逃计划** | 20–35岁通勤族、周末旅行人群 | 自由、轻松、想逃离工作 | 小车、地图、出口标志、逃跑中的小人物 | 场景感
-  ## 验证
-  设备 B 已通过正式任务读取能力精确回读线程 019f5034-234e-77e3-a2b8-c6a76b72e414；实体、标题与项目映射可用。
-  ## 失败与风险
-  最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
-  ## 下一步
-  等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
-  ## 原设备与更新时间
-  设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
-
-## `demo-foreman`
-
-logical_task_id: demo-foreman
-entity_state: PRESENT
-semantic_state: PRESENT
-title: 包工头
-logical_project_id: demo
-local_thread_id: 019f4a32-a579-77b1-be24-5c600bd937cd
-pinned: false
-visible_shared_index: 24
-semantic_body_sha256: a421e2e6cb921a45a3aa9ecacef865ab1241c7ac52a8025c9d18123d0228839d
-semantic_body: |
-  ## 当前目标
-  未发现新增说明。
-  ## 已完成
-  已经重新启动，前后端都正常。我也实际发送了一条问题，服务端成功返回答案。 - 前端测试：[http://127.0.0.1:5173/](http://127.0.0.1:5173/) - 后端接口文档：[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) - 健康检查：[http://127.0.0.1:8000/api/health](http://127.0.0.1:8000/api/health) 我已经把前端页面打开在应用内浏览器中。 目前可以测试： - 文字问答和快捷问题 - 语音/文字模式切换 - 按住录音、松开发送、上滑取消 - 使用本地开源 `faster-whisper` 将语音真正转成文字 - “预约体验”表单真实提交并存入 SQLite 数据库 - 桌面端及手机竖屏响应式界面 当前验证结果：前端构建、代码检查通过，后端 6 项测试全部通过，前后端接口均正常。 需要说明：语音识别是真正的 AI 模型；但聊天回答目前是“关键词意图识别＋预设业务知识”，还没有接大语言模型，不是假装调用 AI。用于演示固定业务问答很稳定，如果需要开放式智能对话，下一步可以接入大模型。 目前是本地运行版，尚未部署到公网服务器。第一次使用语音时需要允许浏览器麦克风权限，而且首次加载模型会稍慢一些。
-  ## 关键决定与原因
-  保持该任务既有项目边界与角色职责；本次同步只导入可续接语义并等待用户继续，不自动执行旧需求。
-  ## 文件与命令
-  我又核对了语音链路，发现这次新启动的进程会读取默认“外部转写服务”配置，而本地没有外部地址；这样页面能开、问答能用，但语音会失败。我现在把本地运行配置固定为开源 `faster-whisper`，然后重启后端，确保你测试到的不是残缺版本。
-  ## 验证
-  设备 B 已通过正式任务读取能力精确回读线程 019f4a32-a579-77b1-be24-5c600bd937cd；实体、标题与项目映射可用。
-  ## 失败与风险
-  最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
-  ## 下一步
-  等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
-  ## 原设备与更新时间
-  设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
-
 ## `watermark-foreman`
 
 logical_task_id: watermark-foreman
@@ -719,24 +631,24 @@ logical_project_id: liquidity-watermark-assistant
 local_thread_id: 019f1c3c-e9f2-7981-9e63-27982e981323
 pinned: false
 visible_shared_index: 21
-semantic_body_sha256: d654d4af7eabfc994a0aaed49fef5da864c1beeba3146049c8369011dbcb3aea
+semantic_body_sha256: 4f2f8beb6509fb177bb640cd5ed3488e935b198626347ffc43f14862ce807351
 semantic_body: |
   ## 当前目标
-  未发现新增说明。
+  统筹去水印助手前后端与部署，确保内容安全接口符合微信官方推荐。
   ## 已完成
-  确认了，你截图里官方推荐的是： ```text 文本内容安全识别：/wxa/msg_sec_check 多媒体内容安全识别：/wxa/media_check_async ``` 我之前图片用的是 `/wxa/img_sec_check`，这个不符合你截图里的官方推荐。我已经改了。 后端最新提交：`2546a34 Use official media content security check` 现在逻辑是： ```text 文字反馈/评分： msg_sec_check + 本地高危词兜底 图片去水印： media_check_async 官方接口 + img_sec_check 同步兜底 配置不完整： 不再静默放行，直接提示“内容安全检测暂不可用，请稍后再试” ``` 并且会写日志： ```text content_security_submitted // 已提交微信 media_check_async content_security_passed // 同步检测通过 content_security_rejected // 被拦截 ``` **前端部署** 这次前端没新改动，不用重新上传。如果你还没上传上一版，就用这个： ```text D:\.aaProject-Bruce\liquidity-watermark-assistant\liquidity-watermark-assistant-frontend\dist ``` **后端部署** 覆盖这几个文件： ```bash /root/liquidity-watermark-assistant-backend/.env.example /root/liquidity-watermark-assistant-backend/app/core/config.py /root/liquidity-watermark-assistant-backend/app/services/content_security.py /root/liquidity-watermark-assistant-backend/app/api/v1/media.py ``` 服务器 `.env` 必须加： ```bash WEAPP_CONTENT_SECURITY_ENABLED=true WEAPP_MEDIA_CHECK_ASYNC_URL=https://api.weixin.qq.com/wxa/media_check_async PUBLIC_API_BASE_URL=https://api.hgshouse.com
+  已把多媒体内容安全从旧 `/wxa/img_sec_check` 调整为官方推荐的 `/wxa/media_check_async`，保留同步兜底；后端提交 `2546a34` 已推送。配置不完整时不再静默放行。
   ## 关键决定与原因
-  保持该任务既有项目边界与角色职责；本次同步只导入可续接语义并等待用户继续，不自动执行旧需求。
+  文字反馈使用 `msg_sec_check` 加本地高危词兜底；图片使用 `media_check_async` 加 `img_sec_check` 同步兜底。内容安全不可用时明确失败，避免未经检测直接放行。
   ## 文件与命令
-  后端已推。我确认一下工作区，确保没有漏提交。
+  后端 `.env.example`、`app/core/config.py`、`app/services/content_security.py`、`app/api/v1/media.py`；服务器需配置 `WEAPP_CONTENT_SECURITY_ENABLED`、`WEAPP_MEDIA_CHECK_ASYNC_URL`、`PUBLIC_API_BASE_URL`。
   ## 验证
-  设备 B 已通过正式任务读取能力精确回读线程 019f1c3c-e9f2-7981-9e63-27982e981323；实体、标题与项目映射可用。
+  后端测试 `16 passed`，`ruff` 通过；日志覆盖 submitted、passed、rejected 三类状态。前端本次无新增改动。
   ## 失败与风险
-  最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
+  服务器环境变量和部署尚需在真实环境确认；异步检测回调、凭据与平台授权必须按生产配置验证，不能把本地测试等同上线完成。
   ## 下一步
-  等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
+  若尚未部署，覆盖后端文件、设置服务器环境变量，重启 `watermark-api` 并调用线上 health 接口复核。
   ## 原设备与更新时间
-  设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
+  设备 B，语义更新至 2026-08-05（Asia/Shanghai）。
 
 ## `watermark-frontend`
 
@@ -999,6 +911,35 @@ semantic_body: |
   ## 原设备与更新时间
   设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
 
+## `canvas-garment-foreman`
+
+logical_task_id: canvas-garment-foreman
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头
+logical_project_id: canvas-garment
+local_thread_id: 019f5034-234e-77e3-a2b8-c6a76b72e414
+pinned: false
+visible_shared_index: 19
+semantic_body_sha256: d1ebee4e44ffc9355522c6f74afbaad2ed3d800dd9d679b73834d40887ff0c2b
+semantic_body: |
+  ## 当前目标
+  未发现新增说明。
+  ## 已完成
+  明白。你是让我稍后把之前提到的那几种**IP/印花方向重新找出来，整理成一份清晰的方案表**，每种方案写清： - 核心概念 - 面向人群 - 印花长什么样 - 衣服怎么搭配 - 适合什么印花工艺 - 优缺点和推荐顺序 然后我们从里面选一个，继续做成真正的印花图。之前具体是三种还是五种，我会重新核对，不凭记忆乱写。
+  ## 关键决定与原因
+  保持该任务既有项目边界与角色职责；本次同步只导入可续接语义并等待用户继续，不自动执行旧需求。
+  ## 文件与命令
+  可以，先不出图，只列方向。我按“人群明确、不过分浮夸、适合简单印花”整理成5种： | 排名 | 方案方向 | 主要人群 | 给人的感觉 | 印花可以做什么 | 首发判断 | |---|---|---|---|---|---| | 1 | **互联网故障人格** | 22–35岁程序员、产品、互联网从业者 | 冷幽默、懂行、有一点反骨 | 404情绪、系统报错、低电量、人生加载失败等原创符号 | **最推荐**，你自己就是互联网从业者，内容更真实 | | 2 | **静音反骨上班族** | 23–35岁有工作压力的年轻人 | 表面正常，内心不服；克制但有态度 | “正在配合”“拒绝内耗”等小字搭配原创角色 | 人群更大，容易传播，但文案要避免太常见 | | 3 | **情绪维修站** | 18–30岁大学生、初入职场人群 | 治愈、松弛、带一点丧 | 情绪维修员、破损小机器人、心情补丁、能量充电 | 男女都能穿，适合发展长期角色IP | | 4 | **下班出逃计划** | 20–35岁通勤族、周末旅行人群 | 自由、轻松、想逃离工作 | 小车、地图、出口标志、逃跑中的小人物 | 场景感
+  ## 验证
+  设备 B 已通过正式任务读取能力精确回读线程 019f5034-234e-77e3-a2b8-c6a76b72e414；实体、标题与项目映射可用。
+  ## 失败与风险
+  最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
+  ## 下一步
+  等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
+  ## 原设备与更新时间
+  设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
+
 ## `funhub-space-foreman`
 
 logical_task_id: funhub-space-foreman
@@ -1137,6 +1078,64 @@ semantic_body: |
   已经把后端骨架开发起来了，按前端现有调用对齐了接口： - `GET /api/chat/history` - `POST /api/chat/message` - `GET /health` - `GET /ai/status` 主要文件在 [app/main.py](D:/.aaProject-Bruce/aime-bridge-backend/app/main.py)、[app/services/ai_service.py](D:/.aaProject-Bruce/aime-bridge-backend/app/services/ai_service.py)、[app/services/chat_store.py](D:/.aaProject-Bruce/aime-bridge-backend/app/services/chat_store.py)。默认是 `mock` 模式，没有 API key 也能给前端返回 AI 回复；后续在 `.env` 里配置 `LLM_PROVIDER`、`LLM_API_KEY`、`LLM_MODEL`、`LLM_BASE_URL` 就能接真实 Op
   ## 验证
   设备 B 已通过正式任务读取能力精确回读线程 019e411b-c333-7e82-a6bc-00a373fbc978；实体、标题与项目映射可用。
+  ## 失败与风险
+  最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
+  ## 下一步
+  等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
+  ## 原设备与更新时间
+  设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
+
+## `lottery-foreman`
+
+logical_task_id: lottery-foreman
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头
+logical_project_id: lottery
+local_thread_id: 019fbdee-4ee1-73b0-bd39-e9d2837a7370
+pinned: false
+visible_shared_index: 18
+semantic_body_sha256: 2e3bbbac9f0ab4d8d33cf19fa93df8d4f7212b91d49e6a8d948eafdf9ae999c4
+semantic_body: |
+  ## 当前目标
+  未发现新增说明。
+  ## 已完成
+  精简上下文已导入，等待用户继续。
+  ## 关键决定与原因
+  保持该任务既有项目边界与角色职责；本次同步只导入可续接语义并等待用户继续，不自动执行旧需求。
+  ## 文件与命令
+  我先按工作区入口读取全局规则；不会修改文件或执行任何旧需求。
+  ## 验证
+  设备 B 已通过正式任务读取能力精确回读线程 019fbdee-4ee1-73b0-bd39-e9d2837a7370；实体、标题与项目映射可用。
+  ## 失败与风险
+  最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
+  ## 下一步
+  等待用户在该任务中继续；收到新请求后从上述当前状态接续，并先执行该项目规定的安全检查。
+  ## 原设备与更新时间
+  设备 B，语义精确回读于 2026-08-05 17:17（Asia/Shanghai）。
+
+## `demo-foreman`
+
+logical_task_id: demo-foreman
+entity_state: PRESENT
+semantic_state: PRESENT
+title: 包工头
+logical_project_id: demo
+local_thread_id: 019f4a32-a579-77b1-be24-5c600bd937cd
+pinned: false
+visible_shared_index: 24
+semantic_body_sha256: a421e2e6cb921a45a3aa9ecacef865ab1241c7ac52a8025c9d18123d0228839d
+semantic_body: |
+  ## 当前目标
+  未发现新增说明。
+  ## 已完成
+  已经重新启动，前后端都正常。我也实际发送了一条问题，服务端成功返回答案。 - 前端测试：[http://127.0.0.1:5173/](http://127.0.0.1:5173/) - 后端接口文档：[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) - 健康检查：[http://127.0.0.1:8000/api/health](http://127.0.0.1:8000/api/health) 我已经把前端页面打开在应用内浏览器中。 目前可以测试： - 文字问答和快捷问题 - 语音/文字模式切换 - 按住录音、松开发送、上滑取消 - 使用本地开源 `faster-whisper` 将语音真正转成文字 - “预约体验”表单真实提交并存入 SQLite 数据库 - 桌面端及手机竖屏响应式界面 当前验证结果：前端构建、代码检查通过，后端 6 项测试全部通过，前后端接口均正常。 需要说明：语音识别是真正的 AI 模型；但聊天回答目前是“关键词意图识别＋预设业务知识”，还没有接大语言模型，不是假装调用 AI。用于演示固定业务问答很稳定，如果需要开放式智能对话，下一步可以接入大模型。 目前是本地运行版，尚未部署到公网服务器。第一次使用语音时需要允许浏览器麦克风权限，而且首次加载模型会稍慢一些。
+  ## 关键决定与原因
+  保持该任务既有项目边界与角色职责；本次同步只导入可续接语义并等待用户继续，不自动执行旧需求。
+  ## 文件与命令
+  我又核对了语音链路，发现这次新启动的进程会读取默认“外部转写服务”配置，而本地没有外部地址；这样页面能开、问答能用，但语音会失败。我现在把本地运行配置固定为开源 `faster-whisper`，然后重启后端，确保你测试到的不是残缺版本。
+  ## 验证
+  设备 B 已通过正式任务读取能力精确回读线程 019f4a32-a579-77b1-be24-5c600bd937cd；实体、标题与项目映射可用。
   ## 失败与风险
   最近回读内容可能包含仍待用户确认、外部服务、部署、冲突或未推送现场；继续前须以任务内最新事实和对应 Git 状态复核，不得把同步本身视为业务授权。
   ## 下一步
