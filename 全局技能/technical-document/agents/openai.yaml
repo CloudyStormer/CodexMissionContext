@@ -1,0 +1,4 @@
+interface:
+  display_name: "技术文档"
+  short_description: "从项目证据生成并逐页验收专业 Word 技术文档"
+  default_prompt: "使用 $technical-document 基于当前项目生成一份专业、可审阅的 Word 技术文档。"
