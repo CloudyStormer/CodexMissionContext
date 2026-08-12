@@ -1,4 +1,4 @@
 interface:
   display_name: "AIMG 漫剧制作"
-  short_description: "从故事逻辑审批到统一角色锚点、样片验证与整季量产"
+  short_description: "从故事逻辑到统一高清九宫格角色锚点、样片与整季量产"
   default_prompt: "使用 $produce-aimg 按完整 AIMG 流程处理我提供的故事与参考图。"
