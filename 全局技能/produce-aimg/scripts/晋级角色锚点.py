@@ -15,6 +15,7 @@ FORBIDDEN_PARTS = ("未通过", "失败", "rejected")
 APPROVED_STATES = {"PASS", "LOCKED", "APPROVED"}
 ROLE_DIR_PATTERN = re.compile(r"^(角色-\d+)_(.+)$")
 FORMAL_NAME_PATTERN = re.compile(r"^角色基准九宫格_(v\d+)\.png$")
+WINDOWS_INVALID_COMPONENT_CHARS = set('<>:"/\\|?*')
 EXPECTED_CELL_CODES = [
     "V01-F0", "V02-B180", "V03-L90", "V04-R90", "V05-LF45",
     "V06-RF45", "V07-LB135", "V08-RB135", "V09-FULL",
@@ -32,6 +33,16 @@ def is_within(child: Path, parent: Path) -> bool:
         return True
     except ValueError:
         return False
+
+
+def safe_role_name(name: str) -> bool:
+    return bool(
+        name
+        and name not in {".", ".."}
+        and "." not in name
+        and not any(char in WINDOWS_INVALID_COMPONENT_CHARS or ord(char) < 32 for char in name)
+        and not name.endswith(" ")
+    )
 
 
 def png_size(path: Path) -> tuple[int, int]:
@@ -55,9 +66,17 @@ def approval_row(project: Path, role_id: str, role_name: str) -> dict[str, str]:
         raise SystemExit("拒绝：缺少角色九宫格审批清单")
     with approval_file.open("r", encoding="utf-8-sig", newline="") as stream:
         rows = list(csv.DictReader(stream))
-    for row in rows:
-        if row.get("角色编号", "").strip() == role_id and row.get("角色名", "").strip() == role_name:
-            return row
+    matches = [
+        row for row in rows
+        if row.get("角色编号", "").strip() == role_id
+    ]
+    if len(matches) > 1:
+        raise SystemExit(f"拒绝：审批清单存在同角色编号重复行：{role_id}")
+    if matches:
+        row = matches[0]
+        if row.get("角色名", "").strip() != role_name:
+            raise SystemExit(f"拒绝：审批清单中 {role_id} 的角色名与目标不一致")
+        return row
     raise SystemExit(f"拒绝：审批清单中没有 {role_id}_{role_name}")
 
 
@@ -97,6 +116,8 @@ def main() -> int:
             raise SystemExit("拒绝：候选或清单不存在")
         if any(part in str(source).lower() for part in FORBIDDEN_PARTS):
             raise SystemExit("拒绝：失败/未通过候选不能晋级")
+    if candidate.suffix.lower() != ".png":
+        raise SystemExit("拒绝：候选必须为 PNG")
 
     role_match = ROLE_DIR_PATTERN.fullmatch(args.角色目录)
     name_match = FORMAL_NAME_PATTERN.fullmatch(args.文件名)
@@ -106,6 +127,29 @@ def main() -> int:
         raise SystemExit("拒绝：正式文件名必须为 角色基准九宫格_vN.png")
     role_id, role_name = role_match.groups()
     version = name_match.group(1)
+
+    if not safe_role_name(role_name):
+        raise SystemExit("拒绝：角色名必须是单一安全目录组件，不得包含点、路径分隔符或 Windows 非法字符")
+    formal_root = (project / "10_角色基准图").resolve()
+    role_root = (formal_root / args.角色目录).resolve()
+    if role_root.parent != formal_root or role_root.name != args.角色目录:
+        raise SystemExit("拒绝：角色目录必须是 10_角色基准图 下的单一安全组件")
+
+    candidate_root = (role_root / "00_待审批").resolve()
+    if candidate.parent != candidate_root:
+        raise SystemExit("拒绝：候选必须物理位于该角色的 00_待审批 目录")
+    if manifest_path != candidate.with_suffix(".manifest.json"):
+        raise SystemExit("拒绝：候选清单必须与候选 PNG 同名且位于同一目录")
+    current_images = sorted(
+        path.resolve() for path in candidate_root.iterdir()
+        if path.is_file() and path.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}
+    )
+    current_manifests = sorted(
+        path.resolve() for path in candidate_root.iterdir()
+        if path.is_file() and path.name.endswith(".manifest.json")
+    )
+    if current_images != [candidate] or current_manifests != [manifest_path]:
+        raise SystemExit("拒绝：该角色的 00_待审批 只允许保留审批清单当前一个候选及其 manifest")
 
     state_file = project / "01_项目总览" / "审批状态.md"
     if not state_file.is_file() or not gate_passed(state_file, "G3"):
@@ -122,7 +166,12 @@ def main() -> int:
     if not quote:
         raise SystemExit("拒绝：用户审批原话为空，不能证明明确审批")
     expected_candidate = row.get("候选路径", "").strip()
-    if expected_candidate and (project / expected_candidate).resolve() != candidate:
+    if not expected_candidate:
+        raise SystemExit("拒绝：审批清单的候选路径为空")
+    expected_candidate_path = (project / expected_candidate).resolve()
+    if not is_within(expected_candidate_path, project):
+        raise SystemExit("拒绝：审批清单的候选路径不在项目内")
+    if expected_candidate_path != candidate:
         raise SystemExit("拒绝：候选路径与审批清单不一致")
 
     width, height = png_size(candidate)
@@ -137,10 +186,19 @@ def main() -> int:
         raise SystemExit("拒绝：清单角色与目标角色不一致")
     if manifest.get("schema") != "aimg-character-grid/v1":
         raise SystemExit("拒绝：清单 schema 不正确")
-    if manifest.get("version") != version:
-        raise SystemExit("拒绝：清单版本与正式文件名不一致")
-    if manifest.get("sha256") != sha256(candidate):
+    row_version = row.get("版本", "").strip()
+    if row_version != version or manifest.get("version") != version:
+        raise SystemExit("拒绝：CSV 版本、manifest 版本和正式文件名版本必须完全一致")
+    if manifest.get("status") != "REVIEW":
+        raise SystemExit("拒绝：候选 manifest 必须为 REVIEW")
+    if manifest.get("image_file") != candidate.name:
+        raise SystemExit("拒绝：manifest image_file 与候选 PNG 文件名不一致")
+    candidate_hash = sha256(candidate)
+    if manifest.get("sha256") != candidate_hash:
         raise SystemExit("拒绝：候选图片哈希与清单不一致")
+    approval_hash = row.get("审批绑定SHA256", "").strip().lower()
+    if not approval_hash or approval_hash != candidate_hash:
+        raise SystemExit("拒绝：审批绑定SHA256必须等于候选 PNG 实际 SHA256")
     if manifest.get("direction_basis") != "character_self":
         raise SystemExit("拒绝：清单未声明以角色自身左右为准")
     cells = manifest.get("cells")
@@ -156,11 +214,22 @@ def main() -> int:
     if qa.get("mirror_prohibited_and_verified") is not True or manifest.get("mirror_generated") is not False:
         raise SystemExit("拒绝：禁止镜像规则尚未确认")
 
-    formal_root = (project / "10_角色基准图").resolve()
-    destination_dir = (formal_root / args.角色目录).resolve()
+    for cell in cells:
+        source_path = str(cell.get("source_path", "")).strip() if isinstance(cell, dict) else ""
+        if source_path:
+            source = (project / source_path).resolve()
+            if not is_within(source, project) or not source.is_file():
+                raise SystemExit("拒绝：manifest source_path 必须指向项目内已存在的文件")
+
+    destination_dir = (role_root / "01_正式锚点").resolve()
     destination = (destination_dir / args.文件名).resolve()
     destination_manifest = destination.with_suffix(".manifest.json")
     approval_record = destination_dir / f"审批记录_{version}.md"
+    if destination_dir.is_dir() and any(destination_dir.iterdir()):
+        raise SystemExit(
+            "拒绝：01_正式锚点已有当前正式包；请先用独立归档动作将旧 PNG、manifest "
+            "和审批记录整包迁入 02_历史锚点/vN/ 并将旧 manifest 标记为 SUPERSEDED"
+        )
     for target in (destination, destination_manifest, approval_record):
         if not is_within(target.resolve(), formal_root):
             raise SystemExit("拒绝：目标路径不在正式角色目录内")
