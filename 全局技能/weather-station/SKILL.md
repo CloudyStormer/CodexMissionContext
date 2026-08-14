@@ -1,85 +1,84 @@
 ---
 name: weather-station
-description: [TODO: Complete and informative explanation of what the skill does and when to use it. Include WHEN to use this skill - specific scenarios, file types, or tasks that trigger it.]
+description: 将持续输入的职场排挤、架空、甩锅、抢功、信息隔离、绩效施压和疑似报复事件，整理成时间线、证据账本、事实与推断分层、风险图和阶段性防守策略。用户说“开始防守”、要求更新防守策略、分析领导打压或职场霸凌、准备书面留痕/沟通/申诉/HR或法律咨询材料时使用；也用于复盘昨天与今天的新事件并规划明天行动。
 ---
 
-# Weather Station
+# 天气台账
 
-## Overview
+## 核心目标
 
-[TODO: 1-2 sentences explaining what this skill enables]
+帮助用户保住事实、选择权、职业信誉、合法权益和身心安全。采取冷静、可验证、低冲突、可升级的防守路线，不把“赢一场争论”当作目标。
 
-## Structuring This Skill
+把用户的感受当作真实影响认真对待，同时把“发生了什么”“可以证明什么”“可能意味着什么”严格分开。始终把未经独立核验的内容写成“用户陈述”或“当前假设”，不要武断确认对方动机或霸凌定性。
 
-[TODO: Choose the structure that best fits this skill's purpose. Common patterns:
+## 启动与持久化规则
 
-**1. Workflow-Based** (best for sequential processes)
-- Works well when there are clear step-by-step procedures
-- Example: DOCX skill with "Workflow Decision Tree" -> "Reading" -> "Creating" -> "Editing"
-- Structure: ## Overview -> ## Workflow Decision Tree -> ## Step 1 -> ## Step 2...
+- 用户说“开始防守”时，进入完整更新模式：吸收本轮新增信息、读取既有本地档案、更新策略并生成新的行动清单。
+- 将“开始防守”视为用户同意写入本地私密档案的最小必要摘要；不要复制整段聊天或原始附件。用户说“只分析，不记档”时，覆盖这一默认规则。
+- 用户未说“开始防守”但要求分析具体事件时，完成分析和草拟，不自动持久化个案材料，除非用户明确说“记入档案”或“更新档案”。
+- 接受流水账、语音转写、截图说明和零散记忆。先给临时判断，不要求用户先整理成完美材料。
+- 只追问会实质改变决策的缺口，每轮通常不超过三个；其余缺口列入待核验清单。
 
-**2. Task-Based** (best for tool collections)
-- Works well when the skill offers different operations/capabilities
-- Example: PDF skill with "Quick Start" -> "Merge PDFs" -> "Split PDFs" -> "Extract Text"
-- Structure: ## Overview -> ## Quick Start -> ## Task Category 1 -> ## Task Category 2...
+## 个案数据隔离
 
-**3. Reference/Guidelines** (best for standards or specifications)
-- Works well for brand guidelines, coding standards, or requirements
-- Example: Brand styling with "Brand Guidelines" -> "Colors" -> "Typography" -> "Features"
-- Structure: ## Overview -> ## Guidelines -> ## Specifications -> ## Usage...
+把技能逻辑和个案事实彻底分开：技能目录只存方法和空白模板，不存姓名、公司、聊天记录、证据或具体事件。
 
-**4. Capabilities-Based** (best for integrated systems)
-- Works well when the skill provides multiple interrelated features
-- Example: Product Management with "Core Capabilities" -> numbered capability list
-- Structure: ## Overview -> ## Core Capabilities -> ### 1. Feature -> ### 2. Feature...
+默认个案根目录：
 
-Patterns can be mixed and matched as needed. Most skills combine patterns (e.g., start with task-based, add workflow for complex operations).
+- macOS/Linux：`${CODEX_HOME:-$HOME/.codex}/private/weather-station/default/`
+- Windows：`%USERPROFILE%\.codex\private\weather-station\default\`
 
-Delete this entire "Structuring This Skill" section when done - it's just guidance.]
+初始化时复制 `assets/case-workspace-template/` 的四个模板。条件允许时将目录权限设为仅当前用户可读写。不要把个案目录放入 Git、CodexMissionContext、共享云盘或公司同步盘；用户明确选择其他位置前，保持本机私密。不要自动跨设备同步个案事实。
 
-## [TODO: Replace with the first main section based on chosen structure]
+为人员使用代号，如 `L1`、`HR1`、`P1`；在确有必要时才保存真实姓名。不要保存密码、令牌、Cookie、受法律特权保护的材料或与个案无关的公司机密。
 
-[TODO: Add content here. See examples in existing skills:
-- Code samples for technical skills
-- Decision trees for complex workflows
-- Concrete examples with realistic user requests
-- References to scripts/templates/references as needed]
+## 完整更新工作流
 
-## Resources (optional)
+每次“开始防守”按顺序执行：
 
-Create only the resource directories this skill actually needs. Delete this section if no resources are required.
+1. 读取 `references/analysis-playbook.md`；需要写沟通文本时再读取 `references/message-patterns.md`。
+2. 读取个案目录的 `00-overview.md`、`01-events.md`、`02-evidence-index.md` 和 `03-strategy.md`。文件不存在时从模板初始化。
+3. 把本轮材料拆成原始陈述、可核实事实、解释/推断、证据线索和未知项。保留原话中的关键限定，不替用户补齐动机。
+4. 为新事件分配事件 ID，如 `E-20260814-01`。按发生时间排序；记录时间和发生时间分开。历史补录必须标明“回忆补录”。
+5. 将证据只登记为索引：来源、时间、保存位置、能证明什么、真实性风险和取得方式。不要改写原件；不要绕过权限、私自导出无权持有的数据或鼓励非法取证。
+6. 至少比较两种合理解释，包括组织混乱、能力/资源问题、正常管理变化，以及有针对性的排挤或甩锅。为每种解释给出依据、反证和置信度。
+7. 评估工作、绩效、声誉、合规/法律、健康安全和离职选择权六类风险；标记风险级别与触发条件。
+8. 选择“最小有效防守”：优先书面确认、成果可见化、边界澄清、决策留痕、访问权修复、盟友与见证人、备选方案；再决定是否升级。
+9. 更新可变的 `03-strategy.md`，并在变更记录中写明本轮新增事实、策略变化和变化原因。事件账本采用追加和勘误，不静默删除旧记录。
+10. 交付本轮防守简报，并明确哪些内容已落盘、哪些只存在于当前对话。
 
-### scripts/
-Executable code (Python/Bash/etc.) that can be run directly to perform specific operations.
+## 本轮防守简报格式
 
-**Examples from other skills:**
-- PDF skill: `fill_fillable_fields.py`, `extract_form_field_info.py` - utilities for PDF manipulation
-- DOCX skill: `document.py`, `utilities.py` - Python modules for document processing
+按需要压缩，但至少覆盖：
 
-**Appropriate for:** Python scripts, shell scripts, or any executable code that performs automation, data processing, or specific operations.
+1. **一句话判断**：当前最重要的风险与最稳妥方向。
+2. **新增事实**：本轮可验证信息、证据状态和仍属推断的部分。
+3. **变化量**：相对上一版，风险或策略发生了什么变化。
+4. **模式假设**：两到四种解释、置信度、支持与反证。
+5. **风险板**：六类风险的绿/黄/橙/红等级及触发条件。
+6. **行动节奏**：今天、未来三天、未来两周分别做什么；每项写目的、动作、风险和停止条件。
+7. **可直接发送的文字**：仅在有必要时提供中性、短、可留痕的草稿。
+8. **待核验问题**：只列会改变策略的关键缺口。
+9. **档案回执**：列出更新过的事件 ID、证据 ID、策略版本和文件位置。
 
-**Note:** Scripts may be executed without loading into context, but can still be read by Codex for patching or environment adjustments.
+## 防守原则
 
-### references/
-Documentation and reference material intended to be loaded into context to inform Codex's process and thinking.
+- 先稳住工作交付和身心状态，再处理定性与升级。
+- 让关键事实进入正常工作流程：邮件、会议纪要、任务系统、版本记录和明确责任边界。
+- 用“目标—责任—依赖—截止时间—验收标准”表达问题，减少人格冲突。
+- 优先可逆动作；在证据不足时避免公开指控、情绪化群发、突然摊牌或辞职。
+- 同时准备 A 线（留在岗位并修复边界）和 B 线（内部转岗、外部机会、法律/工会咨询），不要把全部筹码押在单一路径。
+- 任何升级都写清目的、最小披露范围、预期结果、潜在反制和下一步。
+- 不建议报复、威胁、造谣、栽赃、破坏系统、冒充他人、窃取资料、泄密或规避访问控制。
 
-**Examples from other skills:**
-- Product management: `communication.md`, `context_building.md` - detailed workflow guides
-- BigQuery: API reference documentation and query examples
-- Finance: Schema documentation, company policies
+## 高风险升级
 
-**Appropriate for:** In-depth documentation, API references, database schemas, comprehensive guides, or any detailed information that Codex should reference while working.
+出现以下任一情况时，把风险至少升为橙色并优先保全证据、咨询合适的专业人士：正式绩效/纪律处分、明确解雇或逼退信号、投诉后报复、歧视或性骚扰、威胁或人身安全风险、被要求违法违规、关键系统访问被切断且被追责、要求销毁或伪造记录。
 
-### assets/
-Files not intended to be loaded into context, but rather used within the output Codex produces.
+需要判断录音合法性、劳动法时效、歧视/报复构成或证据提交方式时，先核对用户所在地和劳动关系所在地，再查询当前官方法规或建议用户咨询当地劳动律师/工会；不要凭记忆给确定法律结论。未经用户明确授权，不代用户联系领导、HR、工会、律师或任何第三方。
 
-**Examples from other skills:**
-- Brand styling: PowerPoint template files (.pptx), logo files
-- Frontend builder: HTML/React boilerplate project directories
-- Typography: Font files (.ttf, .woff2)
+若存在迫在眉睫的人身危险、自伤风险或严重健康危机，暂停职场策略推演，优先建议联系当地紧急服务、可信赖的人或专业支持。
 
-**Appropriate for:** Templates, boilerplate code, document templates, images, icons, fonts, or any files meant to be copied or used in the final output.
+## 迭代技能
 
----
-
-**Not every skill requires all three types of resources.**
+用户要求“完善这个 Skill”“增强防守模型”或指出真实使用中的缺陷时，使用 `skill-creator` 更新本技能，保持个案数据隔离，运行验证，并把新增方法写入适当的引用文件，不把具体案例固化进通用技能。

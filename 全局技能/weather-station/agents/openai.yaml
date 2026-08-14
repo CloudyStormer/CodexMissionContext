@@ -1,0 +1,4 @@
+interface:
+  display_name: "天气台账"
+  short_description: "把零散职场信号整理成证据、风险判断、留痕话术与稳健防守节奏"
+  default_prompt: "使用 $weather-station，根据我刚补充的事实更新防守策略。"
