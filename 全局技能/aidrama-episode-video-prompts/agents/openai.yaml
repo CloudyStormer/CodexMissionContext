@@ -1,0 +1,4 @@
+interface:
+  display_name: "漫剧分集视频提示词"
+  short_description: "按漫剧和集数逐镜交付可直接复制的完整视频提示词"
+  default_prompt: "Use $aidrama-episode-video-prompts to give me every complete video prompt for the requested AI drama episode."
