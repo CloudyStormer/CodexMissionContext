@@ -1,4 +1,4 @@
 interface:
-  display_name: "学习笔记"
-  short_description: "把每次学习对话压缩成持久笔记，并按主题快速精准回忆"
-  default_prompt: "使用 $skillnotes 回忆我的学习主题，或把这次学习整理后记入主题索引。"
+  display_name: "AI 学习笔记"
+  short_description: "持续维护AI开发学习总览、专题笔记和准确进度"
+  default_prompt: "使用 $skillnotes 把本次学习补充进总览和专题笔记，并更新下一步。"
