@@ -1,0 +1,4 @@
+interface:
+  display_name: "KPI 维护与绩效自评"
+  short_description: "维护个人绩效目标、成果证据与自评版本，支持中文审核和英文输出"
+  default_prompt: "请使用 $kpi-maintenance，结合我已保存的 KPI 和新增进展，更新知识库并整理中文绩效自评。"
